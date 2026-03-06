@@ -1,0 +1,63 @@
+.release {
+  display: flex;
+  padding: 16px;
+  padding: 10px;
+}
+.releases__grid{
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: right;
+}
+.releases__card{
+  display: flex;
+  position: relative;
+  width: 224px;
+  height: 224px;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  text-decoration: none;
+}
+.releases__cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: filter 0.3s ease;
+}
+
+.releases__card:hover .releases__cover {
+  filter: brightness(0.4);
+}
+
+.releases__info {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.releases__card:hover .releases__info {
+  opacity: 1;
+}
+
+.releases__song {
+  font-family: "DM Sans", sans-serif;
+  font-size: 20px;
+  color: white;
+  margin: 0;
+}
+
+.releases__artist {
+  font-family: "DM Sans", sans-serif;
+  font-size: 10px;
+  color: white;
+  letter-spacing: 2.4px;
+  text-transform: uppercase;
+  margin: 8px 0 0;
+}
