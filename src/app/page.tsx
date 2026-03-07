@@ -67,17 +67,40 @@ import {useState} from "react";
             setError("");
 
             try {
-                const formData = new FormData();
-                formData.append("artistName", form.artistName || "");
-                formData.append("email", form.email || "");
-                formData.append("trackTitle", form.trackTitle || "");
-                formData.append("link", form.link || "");
-                formData.append("message", form.message || "");
-                if (form.file) formData.append("file", form.file);
+                let fileUrl = null;
 
+                // Upload file directly to Cloudinary from browser
+                if (form.file) {
+                    const sigRes = await fetch("/api/cloudinary-signature");
+                    const { timestamp, signature, cloudName, apiKey } = await sigRes.json();
+
+                    const fileData = new FormData();
+                    fileData.append("file", form.file);
+                    fileData.append("timestamp", timestamp);
+                    fileData.append("signature", signature);
+                    fileData.append("api_key", apiKey);
+                    fileData.append("folder", "cafe-riddim/submissions");
+
+                    const uploadRes = await fetch(
+                        `https://api.cloudinary.com/v1_1/${cloudName}/auto/upload`,
+                        { method: "POST", body: fileData }
+                    );
+                    const uploadData = await uploadRes.json();
+                    fileUrl = uploadData.secure_url;
+                }
+
+                // Send form data + fileUrl to API (no file, so no size limit issue)
                 const res = await fetch("/api/submit-music", {
                     method: "POST",
-                    body: formData,
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        artistName: form.artistName,
+                        email: form.email,
+                        trackTitle: form.trackTitle,
+                        link: form.link,
+                        message: form.message,
+                        fileUrl,
+                    }),
                 });
 
                 if (!res.ok) throw new Error("Failed");
@@ -87,8 +110,7 @@ import {useState} from "react";
             } finally {
                 setLoading(false);
             }
-        };
-    return (
+        };    return (
         <div>
             {showModal && (
                 <div className="modal__overlay" onClick={() => setShowModal(false)}>
