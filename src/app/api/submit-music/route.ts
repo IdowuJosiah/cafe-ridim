@@ -27,10 +27,9 @@ export async function POST(req: NextRequest) {
                     },
                     (error, result) => {
                         if (error) {
-                            console.error("Cloudinary error:", error); // add this
+                            console.error("Cloudinary error:", error);
                             reject(error);
-                        }
-                        else resolve(result as UploadApiResponse);
+                        } else resolve(result as UploadApiResponse);
                     }
                 ).end(buffer);
             });
@@ -43,17 +42,17 @@ export async function POST(req: NextRequest) {
 
         await resend.emails.send({
             from: "onboarding@resend.dev",
-            to: "josiahidowutioluwanimi@gmail.com", // replace with your actual email
+            to: "josiahidowutioluwanimi@gmail.com",
             subject: `New Submission — ${trackTitle} by ${artistName}`,
             html: `
-        <h2>New Music Submission</h2>
-        <p><strong>Artist:</strong> ${artistName}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Track:</strong> ${trackTitle}</p>
-        <p><strong>Link:</strong> <a href="${link}">${link}</a></p>
-        <p><strong>Message:</strong> ${message || "None"}</p>
-        ${fileUrl ? `<p><strong>File:</strong> <a href="${fileUrl}">${fileUrl}</a></p>` : ""}
-      `,
+                <h2>New Music Submission</h2>
+                <p><strong>Artist:</strong> ${artistName}</p>
+                <p><strong>Email:</strong> ${email}</p>
+                <p><strong>Track:</strong> ${trackTitle}</p>
+                <p><strong>Link:</strong> <a href="${link}">${link}</a></p>
+                <p><strong>Message:</strong> ${message || "None"}</p>
+                ${fileUrl ? `<p><strong>File:</strong> <a href="${fileUrl}">${fileUrl}</a></p>` : ""}
+            `,
         });
 
         return NextResponse.json({ success: true });
