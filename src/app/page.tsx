@@ -6,14 +6,88 @@ const cafeRiddimLogo = "/canva.png";
 const cafeRidimLogoBlack = "/canvablack.png"
 import Release from "../components/release";
 const artistImage = "/artist.png";
-const submitImage = "/footerimage.jpg"
+const submitImage = "/houn.jpg";
 import Playlist from "../components/playlists";
 import Link from "next/link";
 import {useState} from "react";
-export default function Home() {
-    const [showModal, setShowModal] = useState(false);
-    const [form, setForm] = useState<{ file?: File }>({});
 
+
+    export default function Home() {
+
+
+
+
+
+
+    const [showModal, setShowModal] = useState(false);
+    const [form, setForm] = useState<{
+        artistName?: string;
+        email?: string;
+        trackTitle?: string;
+        link?: string;
+        message?: string;
+        file?: File;
+    }>({});
+
+    const [loading, setLoading] = useState(false);
+    const [success, setSuccess] = useState(false);
+    const [error, setError] = useState("");
+
+        const [fieldErrors, setFieldErrors] = useState<{
+            trackTitle?: string;
+            artistName?: string;
+            email?: string;
+            link?: string;
+            file?: string;
+        }>({});
+        const validate = () => {
+            const errors: typeof fieldErrors = {};
+            if (!form.trackTitle) errors.trackTitle = "Track title is required";
+            if (!form.artistName) errors.artistName = "Artist name is required";
+            if (!form.email) {
+                errors.email = "Email is required";
+            } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
+                errors.email = "Please enter a valid email";
+            }
+            if (form.link && !/^https?:\/\/.+/.test(form.link)) {
+                errors.link = "Please enter a valid URL starting with https://";
+            }
+            if (!form.file) errors.file = "Please upload a track";
+            return errors;
+        };
+        const handleSubmit = async () => {
+            const errors = validate();
+            if (Object.keys(errors).length > 0) {
+                setFieldErrors(errors);
+                return;
+            }
+
+            setFieldErrors({});
+            setLoading(true);
+            setError("");
+
+            try {
+                const formData = new FormData();
+                formData.append("artistName", form.artistName || "");
+                formData.append("email", form.email || "");
+                formData.append("trackTitle", form.trackTitle || "");
+                formData.append("link", form.link || "");
+                formData.append("message", form.message || "");
+                if (form.file) formData.append("file", form.file);
+
+                const res = await fetch("/api/submit-music", {
+                    method: "POST",
+                    body: formData,
+                });
+
+                if (!res.ok) throw new Error("Failed");
+                setSuccess(true);
+            } catch {
+                setError("Something went wrong. Please try again.");
+            } finally {
+                setLoading(false);
+            }
+        };
     return (
         <div>
             {showModal && (
@@ -23,43 +97,80 @@ export default function Home() {
                         <h2 className="modal__title">Send us music for collaboration and release consideration.</h2>
                         <p className="modal__subtitle"> If it fits the world we’re building, we’ll be in touch.</p>
 
-                        <div className="modal__form">
-                            <div className="modal__field">
-                                <label>TRACK TITLE</label>
-                                <input type="text" placeholder="Name of your track" />
+                        {success ? (
+                            <div className="modal__success">
+                                <p>🎵 Submission received! Well be in touch.</p>
                             </div>
-                            <div className="modal__field">
-                                <label>ARTIST NAME(S)</label>
-                                <input type="text" placeholder="Your name or alias" />
-                            </div>
-                            <div className="modal__field">
-                                <label>PRIMARY CONTACT EMAIL</label>
-                                <input type="email" placeholder="your@email.com" />
-                            </div>
-                            <div className="modal__field">
-                                <label>SPOTIFY (if applicable)</label>
-                                <input type="url" placeholder="https://..." />
-                            </div>
-                            <div className="modal__field">
-                                <label>ADDITIONAL NOTES (optional)</label>
-                                <textarea placeholder="Who you are, where you’re from, the sound, and what you’re building" rows={4} />
-                            </div>
-                            <div className="modal__field">
-                                <label>Upload Track</label>
-                                <div className="modal__upload">
+                        ) : (
+                            <div className="modal__form">
+                                <div className="modal__field">
+                                    <label>TRACK TITLE</label>
                                     <input
-                                        type="file"
-                                        id="track-upload"
-                                        accept=".mp3,.wav,.aiff,.flac"
-                                        onChange={(e) => setForm({ ...form, file: e.target.files?.[0] })}
+                                        type="text"
+                                        placeholder="Name of your track"
+                                        onChange={(e) => setForm({ ...form, trackTitle: e.target.value })}
                                     />
-                                    <label htmlFor="track-upload" className="modal__upload-label">
-                                        {form?.file ? form.file.name : "Click to upload or drag and drop"}
-                                        <span>.MP3, .WAV, .AIFF, .FLAC</span>
-                                    </label>
+                                    {fieldErrors.trackTitle && <span className="field__error">{fieldErrors.trackTitle}</span>}
                                 </div>
+
+                                <div className="modal__field">
+                                    <label>ARTIST NAME(S)</label>
+                                    <input
+                                        type="text"
+                                        placeholder="Your name or alias"
+                                        onChange={(e) => setForm({ ...form, artistName: e.target.value })}
+                                    />
+                                    {fieldErrors.artistName && <span className="field__error">{fieldErrors.artistName}</span>}
+                                </div>
+
+                                <div className="modal__field">
+                                    <label>PRIMARY CONTACT EMAIL</label>
+                                    <input
+                                        type="email"
+                                        placeholder="your@email.com"
+                                        onChange={(e) => setForm({ ...form, email: e.target.value })}
+                                    />
+                                    {fieldErrors.email && <span className="field__error">{fieldErrors.email}</span>}
+                                </div>
+
+                                <div className="modal__field">
+                                    <label>SPOTIFY (if applicable)</label>
+                                    <input
+                                        type="url"
+                                        placeholder="https://..."
+                                        onChange={(e) => setForm({ ...form, link: e.target.value })}
+                                    />
+                                    {fieldErrors.link && <span className="field__error">{fieldErrors.link}</span>}
+                                </div>
+
+                                <div className="modal__field">
+                                    <label>Upload Track</label>
+                                    <div className="modal__upload">
+                                        <input
+                                            type="file"
+                                            id="track-upload"
+                                            accept=".mp3,.wav,.aiff,.flac"
+                                            onChange={(e) => setForm({ ...form, file: e.target.files?.[0] })}
+                                        />
+                                        <label htmlFor="track-upload" className="modal__upload-label">
+                                            {form?.file ? form.file.name : "Click to upload or drag and drop"}
+                                            <span>.MP3, .WAV, .AIFF, .FLAC</span>
+                                        </label>
+                                    </div>
+                                    {fieldErrors.file && <span className="field__error">{fieldErrors.file}</span>}
+                                </div>
+                                {error && <p className="modal__error">{error}</p>}
+                                <button
+                                    className="modal__submit"
+                                    onClick={handleSubmit}
+                                    disabled={loading}
+                                >
+                                    {loading ? "SENDING..." : "SUBMIT"}
+                                </button>
                             </div>
-                            <button className="modal__submit">SUBMIT</button>
+                        )}
+                        <div>
+
                         </div>
                     </div>
                 </div>
@@ -222,7 +333,7 @@ export default function Home() {
             </section>
             <footer className="footer__section" id="about">
                 <div className="footer__image">
-                        <img src={submitImage}/>
+                        <img src={submitImage} alt="logo"/>
                 </div>
                 <div className="socials__section">
                     <p>

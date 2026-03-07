@@ -7,7 +7,6 @@ const TRACK_IDS = [
     "7Gu2envDOkET7Tq1SEwx1s",
     "5Iku7QUJV5KXyT5fVHAxcd",
     "3JN8aItsGqTWapuekI8vxM",
-    // ...your track IDs
 ];
 
 export default function Release() {
