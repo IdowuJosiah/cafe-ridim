@@ -72,14 +72,14 @@ import {useState} from "react";
                 // Upload file directly to Cloudinary from browser
                 if (form.file) {
                     const sigRes = await fetch("/api/cloudinary-signature");
-                    const { timestamp, signature, cloudName, apiKey } = await sigRes.json();
+                    const { timestamp, signature, folder, cloudName, apiKey } = await sigRes.json();
 
                     const fileData = new FormData();
                     fileData.append("file", form.file);
                     fileData.append("timestamp", String(timestamp));
                     fileData.append("signature", signature);
                     fileData.append("api_key", apiKey);
-                    fileData.append("folder", "cafe-riddim/submissions");
+                    fileData.append("folder", folder); // use folder from signature response
 
                     const uploadRes = await fetch(
                         `https://api.cloudinary.com/v1_1/${cloudName}/auto/upload`,
