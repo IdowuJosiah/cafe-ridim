@@ -69,20 +69,14 @@ import {useState} from "react";
             try {
                 let fileUrl = null;
 
-                // Upload file directly to Cloudinary from browser
                 if (form.file) {
-                    const sigRes = await fetch("/api/cloudinary-signature");
-                    const { timestamp, signature, folder, cloudName, apiKey } = await sigRes.json();
-
                     const fileData = new FormData();
                     fileData.append("file", form.file);
-                    fileData.append("timestamp", String(timestamp));
-                    fileData.append("signature", signature);
-                    fileData.append("api_key", apiKey);
-                    fileData.append("folder", folder); // use folder from signature response
+                    fileData.append("upload_preset", "cafe_riddim_unsigned"); // your preset name
+                    fileData.append("folder", "cafe-riddim/submissions");
 
                     const uploadRes = await fetch(
-                        `https://api.cloudinary.com/v1_1/${cloudName}/auto/upload`,
+                        `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/auto/upload`,
                         { method: "POST", body: fileData }
                     );
                     const uploadData = await uploadRes.json();
@@ -90,7 +84,6 @@ import {useState} from "react";
                     fileUrl = uploadData.secure_url;
                 }
 
-                // Send form data + fileUrl to API (no file, so no size limit issue)
                 const res = await fetch("/api/submit-music", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
@@ -111,7 +104,8 @@ import {useState} from "react";
             } finally {
                 setLoading(false);
             }
-        };    return (
+        };
+        return (
         <div>
             {showModal && (
                 <div className="modal__overlay" onClick={() => setShowModal(false)}>
