@@ -231,15 +231,30 @@ html {
     width: 20%;
     height: 200px;
 }
+.image__one img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+
+}
 .image__four__section{
     width: 40%;
     display: flex;
     flex-wrap: wrap;
     gap: 10px ;
 }
+
 .image__four{
     width: 49%;
     height: 95px;
+}
+.image__four img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+
 }
 .grid__bottom__half{
     display: flex;
@@ -252,10 +267,24 @@ html {
     background: #6E250A;
     height: 200px;
 }
+.image__nine img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+
+}
 .image__ten{
     width: 10%;
     height: 200px;
     background: #6E250A;
+
+}
+.image__ten img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
 
 }
 .image__ten__section{
@@ -272,6 +301,13 @@ html {
     background: #6E250A;
 
 }
+.ten__section__div img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
 .footer__section{
     background: #FFF1EA ;
     display: flex;

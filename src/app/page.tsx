@@ -10,7 +10,7 @@ const submitImage = "/houn.jpg";
 import Playlist from "../components/playlists";
 import Link from "next/link";
 import {useState} from "react";
-
+import Image from "next/image";
 
     export default function Home() {
 
@@ -105,6 +105,28 @@ import {useState} from "react";
                 setLoading(false);
             }
         };
+
+
+        const CLOUD = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
+        const url = (id: string) => `https://res.cloudinary.com/${CLOUD}/image/upload/f_auto,q_auto/${id}`;
+
+        const g = {
+            one: url("image-one_lrcgy0"),
+            two: url("image-two_f1oqsy"),
+            three: url("image-three_ivxxcc"),
+            four: url("image-four_smpwob"),
+            five: url("image-fiver_daz5ua"),
+            six: url("image-six_sch9bt"),
+            seven: url("image-seven_wvs3g6"),
+            nine: url("image-nine_fizpux"),
+            ten: url("image-ten_nds4s9"),
+            eleven: url("image-eleven_cmet6d"),
+            twelve: url("image-twelve_jk2xtp"),
+            thirteen: url("image-thirteen_r25pql"),
+            fourteen: url("image-fourteen_xsqwya"),
+            sixteen: url("image-sixteen_dqu1wo"),
+            seventeen: url("image-seventeen_vcggep"),
+        };
         return (
         <div>
             {showModal && (
@@ -159,7 +181,14 @@ import {useState} from "react";
                                     />
                                     {fieldErrors.link && <span className="field__error">{fieldErrors.link}</span>}
                                 </div>
-
+                                <div className="modal__field">
+                                    <label>ADDITIONAL NOTES (optional)</label>
+                                    <textarea
+                                        placeholder="Who you are, where you're from, the sound, and what you're building"
+                                        rows={4}
+                                        onChange={(e) => setForm({ ...form, message: e.target.value })}
+                                    />
+                                </div>
                                 <div className="modal__field">
                                     <label>Upload Track</label>
                                     <div className="modal__upload">
@@ -295,55 +324,55 @@ import {useState} from "react";
                 <div className="gallery__grid__section">
                     <div className="grid__top__half">
                         <div className="image__one gt">
-                            1
+                            <img src={g.one} alt={"image"} />
                         </div>
                         <div className="image__one gt" >
-                            2
+                            <img src={g.two} alt={"image"} />
                         </div>
                         <div className="image__one gt">
-                            3
+                            <img src={g.seventeen} alt={"image"} />
                         </div>
                         <div className="image__four__section">
                             <div className="image__four gt">
-                                4
+                                <img src={g.four} alt={"image"} />
                             </div>
                             <div className="image__four gt">
-                                5
+                                <img src={g.five} alt={"image"} />
                             </div>
                             <div className="image__four gt">
-                                6
+                                <img src={g.six} alt={"image"} />
                             </div>
                             <div className="image__four gt">
-                                7
+                                <img src={g.seven} alt={"image"} />
                             </div>
                         </div>
                     </div>
                     <div className="grid__bottom__half">
                         <div className="image__nine">
-                            9
+                            <img src={g.seven} alt={"image"} />
                         </div>
                         <div className="image__ten">
-                           10
+                            <img src={g.nine} alt={"image"} />
                         </div>
                         <div className="image__ten">
-                            11
+                            <img src={g.sixteen} alt={"image"} />
                         </div>
                         <div className="image__ten__section">
                             <div className="ten__section__div">
-                                12
+                                <img src={g.thirteen} alt={"image"} />
                             </div>
                             <div className="ten__section__div">
-                                13
+                                <img src={g.fourteen} alt={"image"} />
                             </div>
                             <div className="ten__section__div">
-                                14
+                                <img src={g.five} alt={"image"} />
                             </div>
                         </div>
                         <div className="image__ten">
-                            16
+                            <img src={g.sixteen} alt={"image"} />
                         </div>
                         <div className="image__nine">
-                            17
+                            <img src={g.three} alt={"image"} />
                         </div>
                     </div>
                 </div>
