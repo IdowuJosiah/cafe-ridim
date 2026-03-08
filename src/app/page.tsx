@@ -76,7 +76,7 @@ import {useState} from "react";
 
                     const fileData = new FormData();
                     fileData.append("file", form.file);
-                    fileData.append("timestamp", timestamp);
+                    fileData.append("timestamp", String(timestamp));
                     fileData.append("signature", signature);
                     fileData.append("api_key", apiKey);
                     fileData.append("folder", "cafe-riddim/submissions");
@@ -86,6 +86,7 @@ import {useState} from "react";
                         { method: "POST", body: fileData }
                     );
                     const uploadData = await uploadRes.json();
+                    console.log("Cloudinary response:", uploadData);
                     fileUrl = uploadData.secure_url;
                 }
 
