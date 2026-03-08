@@ -1,14 +1,17 @@
 import { NextResponse } from "next/server";
-import cloudinary from "../../../lib/cloudinary";
+import crypto from "crypto";
 
 export async function GET() {
     const timestamp = Math.round(new Date().getTime() / 1000);
     const folder = "cafe-riddim/submissions";
+    const apiSecret = process.env.CLOUDINARY_API_SECRET!;
 
-    const signature = cloudinary.utils.api_sign_request(
-        { timestamp, folder },
-        process.env.CLOUDINARY_API_SECRET!
-    );
+    // Manually generate signature — must match exactly what's sent in upload
+    const stringToSign = `folder=${folder}&timestamp=${timestamp}${apiSecret}`;
+    const signature = crypto
+        .createHash("sha256")
+        .update(stringToSign)
+        .digest("hex");
 
     return NextResponse.json({
         timestamp,
