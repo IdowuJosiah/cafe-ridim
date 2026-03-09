@@ -8,8 +8,8 @@ export async function POST(req: NextRequest) {
         const resend = new Resend(process.env.RESEND_API_KEY);
 
         await resend.emails.send({
-            from: "onboarding@resend.dev",
-            to: "josiahidowutioluwanimi@gmail.com",
+            from: "submissions@contact.jazzthedev.site",
+            to: "jesudunsinbankole@gmail.com",
             subject: `New Submission — ${trackTitle} by ${artistName}`,
             html: `
         <div style="font-family: 'Helvetica Neue', Arial, sans-serif; max-width: 600px; margin: 0 auto; background-color: #ffffff; border-radius: 8px; overflow: hidden; border: 1px solid #e5e5e5;">

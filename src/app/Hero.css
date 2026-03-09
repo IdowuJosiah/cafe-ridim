@@ -3,6 +3,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    transition: opacity 0.2s ease;
 }
 html {
     scroll-behavior: smooth;
@@ -17,7 +18,7 @@ html {
     position: relative;
     width: 100%;
     min-height: 120vh;
-    background-image: url("https://www.figma.com/api/mcp/asset/93633085-5b25-4fa6-be23-e4e326b55db2");
+    background-image: url("/bg.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -36,11 +37,13 @@ html {
     position: fixed;
     display: flex;
     justify-content: right;
+    align-items: center;
     padding: 40px 60px 0;
     gap: 24px;
     z-index: 1000;
     width: 100%;
     -webkit-text-stroke: .1px #000000;
+    background: rgba(10, 10, 10, 0.47);
 
 }
 
@@ -221,14 +224,13 @@ html {
 .grid__top__half{
     display: flex;
     align-items: center;
-    gap :10px ;
+    gap : 9px ;
     width: 100%;
 }
 .gt{
-    background-color: #591E08FF;
 }
 .image__one{
-    width: 20%;
+    width: 19%;
     height: 200px;
 }
 .image__one img{
@@ -239,14 +241,14 @@ html {
 
 }
 .image__four__section{
-    width: 40%;
+    width: 41%;
     display: flex;
     flex-wrap: wrap;
     gap: 10px ;
 }
 
 .image__four{
-    width: 49%;
+    width: 48%;
     height: 95px;
 }
 .image__four img{
@@ -264,7 +266,6 @@ html {
 }
 .image__nine{
     width: 30%;
-    background: #6E250A;
     height: 200px;
 }
 .image__nine img{
@@ -277,7 +278,6 @@ html {
 .image__ten{
     width: 10%;
     height: 200px;
-    background: #6E250A;
 
 }
 .image__ten img{
@@ -298,7 +298,6 @@ html {
 .ten__section__div{
     width: 100%;
     height: 33%;
-    background: #6E250A;
 
 }
 .ten__section__div img{
@@ -307,7 +306,20 @@ html {
     object-fit: cover;
     object-position: center;
 }
+.image__one,
+.image__four,
+.image__nine,
+.image__ten,
+.ten__section__div {
+    background: linear-gradient(90deg, #591e08 25%, #7a2b0e 50%, #591e08 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+}
 
+@keyframes shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
 .footer__section{
     background: #FFF1EA ;
     display: flex;
@@ -1196,7 +1208,7 @@ html {
 
 
 /* Mobile */
-@media (max-width: 436px) {
+@media (max-width: 48add6px) {
     .hero {
         position: relative;
         width: 100%;
@@ -1208,7 +1220,7 @@ html {
     }
 
     .hero__nav-link {
-        font-size: 8px;
+        font-size: 10px;
     }
 
     .hero__tagline {

@@ -1,4 +1,3 @@
-// lib/spotify.ts
 
 const CLIENT_ID = process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_ID;
 const CLIENT_SECRET = process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_SECRET;
@@ -10,7 +9,15 @@ export interface Track {
     spotify: string;
 }
 
+let cachedToken: string | null = null;
+let tokenExpiry: number = 0;
+
 export const getSpotifyToken = async (): Promise<string> => {
+    // Return cached token if still valid
+    if (cachedToken && Date.now() < tokenExpiry) {
+        return cachedToken;
+    }
+
     const credentials = `${CLIENT_ID}:${CLIENT_SECRET}`;
     const encoded = Buffer.from(credentials).toString("base64");
 
@@ -24,9 +31,14 @@ export const getSpotifyToken = async (): Promise<string> => {
     });
 
     const data = await res.json();
-    console.log("Token response:", data);
-    return data.access_token;
+
+    // Cache the token — expire 1 minute early to avoid edge cases
+    cachedToken = data.access_token;
+    tokenExpiry = Date.now() + (data.expires_in - 60) * 1000;
+
+    return cachedToken as string;
 };
+
 export const getTrack = async (trackId: string, token: string): Promise<Track> => {
     const res = await fetch(`https://api.spotify.com/v1/tracks/${trackId}`, {
         headers: { "Authorization": `Bearer ${token}` },

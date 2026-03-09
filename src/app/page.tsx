@@ -12,7 +12,34 @@ import Link from "next/link";
 import {useState} from "react";
 import Image from "next/image";
 
-    export default function Home() {
+
+
+
+
+const CLOUD = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
+
+const url = (id: string) =>
+    `https://res.cloudinary.com/${CLOUD}/image/upload/f_auto,q_auto/${id}`;
+
+const g = {
+    one: url("image-one_lrcgy0"),
+    two: url("image-two_f1oqsy"),
+    three: url("image-three_ivxxcc"),
+    four: url("image-four_smpwob"),
+    five: url("image-fiver_daz5ua"),
+    six: url("image-six_sch9bt"),
+    seven: url("image-seven_wvs3g6"),
+    nine: url("image-nine_fizpux"),
+    ten: url("image-ten_nds4s9"),
+    eleven: url("image-eleven_cmet6d"),
+    twelve: url("image-twelve_jk2xtp"),
+    thirteen: url("image-thirteen_r25pql"),
+    fourteen: url("image-fourteen_xsqwya"),
+    sixteen: url("image-sixteen_dqu1wo"),
+    seventeen: url("image-seventeen_vcggep"),
+};
+
+export default function Home() {
 
 
 
@@ -107,26 +134,7 @@ import Image from "next/image";
         };
 
 
-        const CLOUD = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
-        const url = (id: string) => `https://res.cloudinary.com/${CLOUD}/image/upload/f_auto,q_auto/${id}`;
 
-        const g = {
-            one: url("image-one_lrcgy0"),
-            two: url("image-two_f1oqsy"),
-            three: url("image-three_ivxxcc"),
-            four: url("image-four_smpwob"),
-            five: url("image-fiver_daz5ua"),
-            six: url("image-six_sch9bt"),
-            seven: url("image-seven_wvs3g6"),
-            nine: url("image-nine_fizpux"),
-            ten: url("image-ten_nds4s9"),
-            eleven: url("image-eleven_cmet6d"),
-            twelve: url("image-twelve_jk2xtp"),
-            thirteen: url("image-thirteen_r25pql"),
-            fourteen: url("image-fourteen_xsqwya"),
-            sixteen: url("image-sixteen_dqu1wo"),
-            seventeen: url("image-seventeen_vcggep"),
-        };
         return (
         <div>
             {showModal && (
@@ -324,55 +332,55 @@ import Image from "next/image";
                 <div className="gallery__grid__section">
                     <div className="grid__top__half">
                         <div className="image__one gt">
-                            <img src={g.one} alt={"image"} />
+                            <img src={g.one} alt={"image"} loading="lazy" />
                         </div>
                         <div className="image__one gt" >
-                            <img src={g.two} alt={"image"} />
+                            <img src={g.two} alt={"image"} loading="lazy" />
                         </div>
                         <div className="image__one gt">
-                            <img src={g.seventeen} alt={"image"} />
+                            <img src={g.seventeen} alt={"image"} loading="lazy" />
                         </div>
                         <div className="image__four__section">
                             <div className="image__four gt">
-                                <img src={g.four} alt={"image"} />
+                                <img src={g.four} alt={"image"} loading="lazy" />
                             </div>
                             <div className="image__four gt">
-                                <img src={g.five} alt={"image"} />
+                                <img src={g.five} alt={"image"} loading="lazy" />
                             </div>
                             <div className="image__four gt">
-                                <img src={g.six} alt={"image"} />
+                                <img src={g.six} alt={"image"} loading="lazy" />
                             </div>
                             <div className="image__four gt">
-                                <img src={g.seven} alt={"image"} />
+                                <img src={g.seven} alt={"image"} loading="lazy" />
                             </div>
                         </div>
                     </div>
                     <div className="grid__bottom__half">
                         <div className="image__nine">
-                            <img src={g.seven} alt={"image"} />
+                            <img src={g.seven} alt={"image"} loading="lazy" />
                         </div>
                         <div className="image__ten">
-                            <img src={g.nine} alt={"image"} />
+                            <img src={g.nine} alt={"image"} loading="lazy" />
                         </div>
                         <div className="image__ten">
-                            <img src={g.sixteen} alt={"image"} />
+                            <img src={g.sixteen} alt={"image"} loading="lazy" />
                         </div>
                         <div className="image__ten__section">
                             <div className="ten__section__div">
-                                <img src={g.thirteen} alt={"image"} />
+                                <img src={g.thirteen} alt={"image"} loading="lazy" />
                             </div>
                             <div className="ten__section__div">
-                                <img src={g.fourteen} alt={"image"} />
+                                <img src={g.fourteen} alt={"image"} loading="lazy" />
                             </div>
                             <div className="ten__section__div">
-                                <img src={g.five} alt={"image"} />
+                                <img src={g.five} alt={"image"} loading="lazy" />
                             </div>
                         </div>
                         <div className="image__ten">
-                            <img src={g.sixteen} alt={"image"} />
+                            <img src={g.sixteen} alt={"image"} loading="lazy" />
                         </div>
                         <div className="image__nine">
-                            <img src={g.three} alt={"image"} />
+                            <img src={g.three} alt={"image"} loading="lazy" />
                         </div>
                     </div>
                 </div>
