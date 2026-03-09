@@ -1208,7 +1208,7 @@ html {
 
 
 /* Mobile */
-@media (max-width: 48add6px) {
+@media (max-width: 486px) {
     .hero {
         position: relative;
         width: 100%;
