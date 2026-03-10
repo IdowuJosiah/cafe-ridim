@@ -613,7 +613,10 @@ html {
         font-size: 18px;
         line-height: 1.5;
     }
-
+    .hero__submit img{
+        width: 180px;
+        height: 180px;
+    }
     .release__section{
         padding:1px 20px;
 
@@ -952,7 +955,10 @@ html {
     .hero__description p {
         font-size: 15px;
     }
-
+    .hero__submit img{
+        width: 160px;
+        height: 160px;
+    }
     .release__section{
         padding:1px 20px;
 
@@ -1260,7 +1266,10 @@ html {
     .hero__description p {
         font-size: 9px;
     }
-
+    .hero__submit img{
+        width: 100px;
+        height: 100px;
+    }
     .release__section{
         padding:1px 10px;
         margin-top: -50px !important;
