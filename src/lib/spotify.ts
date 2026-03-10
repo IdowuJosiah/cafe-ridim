@@ -38,7 +38,24 @@ export const getSpotifyToken = async (): Promise<string> => {
 
     return cachedToken as string;
 };
+export interface Artist {
+    name: string;
+    image: string;
+    spotify: string;
+}
 
+export const getArtist = async (artistId: string, token: string): Promise<Artist> => {
+    const res = await fetch(`https://api.spotify.com/v1/artists/${artistId}`, {
+        headers: { "Authorization": `Bearer ${token}` },
+    });
+    const data = await res.json();
+    console.log("Artist response:", data); // add this to debug
+    return {
+        name: data.name,
+        image: data.images?.[0]?.url || "/artist.png", // fallback to local image
+        spotify: data.external_urls?.spotify || "#",
+    };
+};
 export const getTrack = async (trackId: string, token: string): Promise<Track> => {
     const res = await fetch(`https://api.spotify.com/v1/tracks/${trackId}`, {
         headers: { "Authorization": `Bearer ${token}` },

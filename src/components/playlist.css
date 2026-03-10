@@ -1,7 +1,11 @@
 
-.playlists {
-    padding: 60px 80px;
+
+.playlists__section{
+    padding: 20px 60px;
+
 }
+
+
 
 .playlists__title {
     font-family: "ATP-SugarCrush", sans-serif;
@@ -14,12 +18,12 @@
 .playlists__grid {
     display: flex;
     gap: 16px;
-    justify-content: center;
+    justify-content: space-between;
 }
 
 .playlists__embed {
     width: 100%;
-    max-width: 400px;
+    max-width: 450px;
     height: 352px;
     border-radius: 12px;
     border: none;
@@ -33,11 +37,10 @@
 
 @media (max-width: 768px) {
 
+    .playlists__section{
+        padding: 20px 50px;
 
-    .playlists {
-        padding: 10px 20px;
     }
-
     .playlists__title {
         font-size: 50px;
         margin-bottom: 40px;
@@ -63,10 +66,10 @@
 
 
 @media (max-width: 430px) {
-    .playlists {
+    .playlists__section{
         padding: 10px 20px;
-    }
 
+    }
     .playlists__title {
         font-size: 30px;
         margin-bottom: 10px;

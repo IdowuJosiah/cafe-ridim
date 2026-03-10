@@ -6,13 +6,13 @@ const cafeRiddimLogo = "/canva.png";
 const cafeRidimLogoBlack = "/canvablack.png"
 import Release from "../components/release";
 const artistImage = "/artist.png";
-const submitImage = "/houn.jpg";
+const submitImage = "/houn3.png";
+const heroSubmitImage = "/hountop.png"
 import Playlist from "../components/playlists";
 import Link from "next/link";
-import {useState} from "react";
+import {useState, useEffect} from "react";
 import Image from "next/image";
-
-
+import { getSpotifyToken, getArtist, Artist } from "../lib/spotify";
 
 
 
@@ -38,11 +38,32 @@ const g = {
     sixteen: url("image-sixteen_dqu1wo"),
     seventeen: url("image-seventeen_vcggep"),
 };
+const ARTISTS = [
+    { name: "LOYE", id: "3jmfHrvYENAqFoXzUyPmeN" },
+    { name: "IFEME C.S", id: "1cqPiZR3MgHkUf3f23LKTQ" },
+    { name: "COZY CTRL", id: "1K0LW4uXYT0kIBp9QvgL3T" },
 
+];
 export default function Home() {
 
 
 
+
+
+    const [artists, setArtists] = useState<Artist[]>([]);
+    const [activeArtist, setActiveArtist] = useState<Artist | null>(null);
+
+    useEffect(() => {
+        const fetchArtists = async () => {
+            const token = await getSpotifyToken();
+            const data = await Promise.all(
+                ARTISTS.map(a => getArtist(a.id, token))
+            );
+            setArtists(data);
+            setActiveArtist(data[0]); // default to first artist
+        };
+        fetchArtists();
+    }, []);
 
 
 
@@ -132,6 +153,8 @@ export default function Home() {
                 setLoading(false);
             }
         };
+
+
 
 
 
@@ -258,17 +281,6 @@ export default function Home() {
                         </a>
                     ))}
                 </nav>
-                <div className="hero__tagline">
-                    <svg width="550" height="230">
-                        <path id="curve" d="M 50,300 A 200,200 0 0,1 550,250">
-                        </path>
-                        <text fill="#1a0a02" className="text" textAnchor={"middle"}>
-                            <textPath fill="#1a0a02" className="text__path" href="#curve" startOffset="50%" textAnchor="middle">
-                                THE SOUND OF GOLDEN HOURS
-                            </textPath>
-                        </text>
-                    </svg>
-                </div>
 
                 <div className="hero__logo">
                     <img src={cafeRiddimLogo} alt="Cafe Riddim" />
@@ -283,7 +295,17 @@ export default function Home() {
                         create meaningful real-world experiences around the sound.
                     </p>
                 </div>
-
+                <div className="hero__submit">
+                    <img
+                        src={heroSubmitImage}
+                        className="spin"
+                        alt="logo"
+                        onClick={(e) => {
+                            e.preventDefault();
+                            setShowModal(true);
+                        }}
+                    />
+                </div>
             </section>
             <section className="release__section" id="releases">
                 <div className="release-header">
@@ -296,32 +318,37 @@ export default function Home() {
                     </Release>
                 </div>
             </section>
-            <section className="featured__section" id="artists">
+            <section className="featured__section " id="artists">
                 <div className="featured__header">
-                    <p>
-                        Featured Artists
-                    </p>
+                    <p>Featured Artists</p>
                 </div>
                 <div className="featured__description">
                     <div className="artist__list">
-                        {["LOYE", "IFEME C.S", "COZY CTRL"].map((item) => (
-                            <p key={item} className="artists__list">
-                                {item}
+                        {artists.map((artist, i) => (
+                            <p
+                                key={i}
+                                className={`artists__list ${activeArtist?.name === artist.name ? "active" : ""}`}
+                                onClick={() => setActiveArtist(artist)}
+                            >
+                                {artist.name}
                             </p>
                         ))}
                     </div>
                     <div className="artist__image">
                         <div className="artist__image__container">
-                            <img src={artistImage} alt="Artist" />
+                            {activeArtist && (
+                                <img
+                                    src={activeArtist.image}
+                                    alt={activeArtist.name}
+                                    style={{ transition: "opacity 0.3s ease" }}
+                                />
+                            )}
                         </div>
                     </div>
-
                 </div>
             </section>
             <section className="playlists__section" id="playlists">
-                <div>
                     <Playlist/>
-                </div>
             </section>
             <section className="gallery__section" id="events">
                 <div className="gallery__header">
@@ -387,8 +414,15 @@ export default function Home() {
             </section>
             <footer className="footer__section" id="about">
                 <div className="footer__image">
-                        <img src={submitImage} alt="logo"/>
-                </div>
+                    <img
+                        src={submitImage}
+                        className="spin"
+                        alt="logo"
+                        onClick={(e) => {
+                            e.preventDefault();
+                            setShowModal(true);
+                        }}
+                    />                </div>
                 <div className="socials__section">
                     <p>
                         Follow us on Socials
