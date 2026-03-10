@@ -107,7 +107,7 @@ html {
     width: 100%;
     justify-content: right;
     display: flex;
-    padding: 20px 80px;
+    padding: 20px 60px;
 }
 .hero__submit img{
     width: 200px;
@@ -612,6 +612,9 @@ html {
     .hero__description p {
         font-size: 18px;
         line-height: 1.5;
+    }
+    .hero__submit{
+        padding: 20px 50px;
     }
     .hero__submit img{
         width: 180px;
