@@ -108,6 +108,8 @@ html {
     justify-content: right;
     display: flex;
     padding: 20px 60px;
+    z-index: 1000;
+    position: absolute;
 }
 .hero__submit img{
     width: 200px;
@@ -153,10 +155,14 @@ html {
     padding: 20px 0;
     justify-content: left;
     display: flex;
+    width: 45%;
+    border-bottom: 1px solid white;
 }
 .featured__header p{
     font-family: "ATP-SugarCrush", sans-serif;
     font-size: 64px;
+    color: white;
+
 }
 .featured__description{
     display: flex;
@@ -164,7 +170,7 @@ html {
     justify-content: space-between;
 }
 .artist__list{
-    width: 35%;
+    width: 45%;
     display: flex;
     flex-direction: column;
 }
@@ -173,8 +179,8 @@ html {
     color: transparent;
     -webkit-text-stroke: 1px white;
     font-family: "ATP-SugarCrush", sans-serif;
-    font-size: 36px;
-    border-top: 1px solid white;
+    font-size: 45px;
+    border-bottom: 1px solid white;
     display: flex;
     align-items: center;
     padding: 20px 0;
@@ -182,10 +188,10 @@ html {
 }
 .artist__list p:hover{
     cursor: pointer;
-    -webkit-text-fill-color: #0a0a0a !important;
+    -webkit-text-fill-color: #fefefe !important;
 }
 .artist__image{
-    width: 48%;
+    width: 55%;
 
 }
 .artist__image__container{
@@ -194,7 +200,7 @@ html {
     justify-content: right;
 }
 .artist__image__container img{
-    width: 60%;
+    width: 80%;
 }
 .playlists__section{
     background: linear-gradient(to bottom, #591E08FF 25%, #6B331E 50%, #CD9A86 95%);
@@ -640,12 +646,10 @@ html {
     }
     .featured__header{
         padding: 20px 0;
-        justify-content: left;
-        display: flex;
+        width: 45%;
     }
     .featured__header p{
-        font-family: "ATP-SugarCrush", sans-serif;
-        font-size: 64px;
+        font-size: 45px;
     }
     .featured__description{
         display: flex;
@@ -653,23 +657,17 @@ html {
         justify-content: space-between;
     }
     .artist__list{
-        width: 35%;
+        width: 45%;
         display: flex;
         flex-direction: column;
     }
     .artist__list p{
-        color: transparent;
-        -webkit-text-stroke: 1px white;
-        font-family: "ATP-SugarCrush", sans-serif;
         font-size: 36px;
-        border-top: 1px solid white;
-        display: flex;
-        align-items: center;
-        padding: 20px 0;
+        padding: 15px 0;
         margin: 0;
     }
     .artist__image{
-        width: 48%;
+        width: 55%;
 
     }
     .artist__image__container{
@@ -678,7 +676,7 @@ html {
         justify-content: right;
     }
     .artist__image__container img{
-        width: 60%;
+        width: 100%;
     }
     .playlists__section{
         background: linear-gradient(to bottom, #591E08FF 25%, #6B331E 50%, #CD9A86 95%);
@@ -918,6 +916,10 @@ html {
 /* Large phones */
 @media (max-width: 768px) {
 
+    .hero {
+        min-height: 60vh;
+    }
+
     .hero__nav {
         padding: 20px 50px 0;
         gap: 20px;
@@ -927,19 +929,8 @@ html {
         font-size: 12px;
     }
 
-    .hero__tagline {
-        position: absolute;
-        top: 10%;
-        left: 11%;
-    }
-
-    .hero__tagline text {
-        font-size: 15px;
-        letter-spacing: 5px;
-    }
-
     .hero__logo {
-        margin-top: 140px;
+        margin-top: 150px;
     }
 
     .hero__description {
@@ -968,7 +959,8 @@ html {
 
     .featured__section{
         background: linear-gradient(to bottom, #591E08FF 25%, #591e08 99%);
-        padding: 20px 45px;
+        padding: 15px 45px;
+        gap:5px
     }
     .featured__header{
         padding: 20px 0;
@@ -976,31 +968,24 @@ html {
         display: flex;
     }
     .featured__header p{
-        font-size: 50px;
+        font-size: 35px;
     }
     .featured__description{
         display: flex;
-        gap: 30px;
+        gap: 10px;
         justify-content: space-between;
     }
     .artist__list{
-        width: 35%;
+        width: 45%;
         display: flex;
         flex-direction: column;
     }
     .artist__list p{
-        color: transparent;
-        -webkit-text-stroke: 1px white;
-        font-family: "ATP-SugarCrush", sans-serif;
-        font-size: 36px;
-        border-top: 1px solid white;
-        display: flex;
-        align-items: center;
-        padding: 20px 0;
-        margin: 0;
+        font-size: 26px;
+        padding: 15px 0;
     }
     .artist__image{
-        width: 48%;
+        width: 50%;
 
     }
     .artist__image__container{
@@ -1009,7 +994,7 @@ html {
         justify-content: right;
     }
     .artist__image__container img{
-        width: 60%;
+        width: 100%;
     }
 
     .gallery__section{
@@ -1226,8 +1211,7 @@ html {
 @media (max-width: 486px) {
     .hero {
         position: relative;
-        width: 100%;
-        min-height: 60vh;
+        min-height: 50vh;
     }
     .hero__nav {
         padding: 10px 20px 0;
@@ -1238,16 +1222,6 @@ html {
         font-size: 10px;
     }
 
-    .hero__tagline {
-        position: absolute;
-        top: 8%;
-        left: -20%;
-    }
-
-    .hero__tagline text {
-        font-size: 10px;
-        letter-spacing: 3px;
-    }
 
     .hero__logo {
         margin-top: 120px;
@@ -1259,6 +1233,9 @@ html {
 
     .hero__description p {
         font-size: 9px;
+    }
+    .hero__submit{
+        padding: 10px;
     }
     .hero__submit img{
         width: 100px;
@@ -1283,28 +1260,23 @@ html {
         padding: 20px 10px;
     }
     .featured__header{
-        padding: 20px 0;
+        padding: 10px 0;
     }
     .featured__header p{
-        font-size: 30px;
+        font-size: 25px;
     }
     .featured__description{
-        display: flex;
-        gap: 10px;
-        justify-content: space-between;
+        gap: 5px;
     }
     .artist__list{
         width: 45%;
-        display: flex;
-        flex-direction: column;
     }
     .artist__list p{
         font-size: 20px;
-        border-top: 1px solid white;
         padding: 10px 0;
     }
     .artist__image{
-        width: 48%;
+        width: 50%;
 
     }
     .artist__image__container{
@@ -1320,11 +1292,11 @@ html {
 
     }
     .gallery__header{
-        padding: 20px 0;
+        padding: 0;
 
     }
     .gallery__header p{
-        font-size: 50px;
+        font-size: 45px;
 
     }
     .gallery__grid__section{

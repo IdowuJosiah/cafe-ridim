@@ -38,11 +38,20 @@ const g = {
     sixteen: url("image-sixteen_dqu1wo"),
     seventeen: url("image-seventeen_vcggep"),
 };
-const ARTISTS = [
-    { name: "LOYE", id: "3jmfHrvYENAqFoXzUyPmeN" },
-    { name: "IFEME C.S", id: "1cqPiZR3MgHkUf3f23LKTQ" },
-    { name: "COZY CTRL", id: "1K0LW4uXYT0kIBp9QvgL3T" },
 
+const ARTISTS = [
+    {
+        name: "LOYE",
+        image: "/Ifeme.png",
+    },
+    {
+        name: "IFEME C.S",
+        image: "/Loye.png",
+    },
+    {
+        name: "COZY CTRL",
+        image: "/cozyctrl.png",
+    },
 ];
 export default function Home() {
 
@@ -50,20 +59,8 @@ export default function Home() {
 
 
 
-    const [artists, setArtists] = useState<Artist[]>([]);
-    const [activeArtist, setActiveArtist] = useState<Artist | null>(null);
+    const [activeArtist, setActiveArtist] = useState(ARTISTS[0]);
 
-    useEffect(() => {
-        const fetchArtists = async () => {
-            const token = await getSpotifyToken();
-            const data = await Promise.all(
-                ARTISTS.map(a => getArtist(a.id, token))
-            );
-            setArtists(data);
-            setActiveArtist(data[0]); // default to first artist
-        };
-        fetchArtists();
-    }, []);
 
 
 
@@ -318,16 +315,17 @@ export default function Home() {
                     </Release>
                 </div>
             </section>
-            <section className="featured__section " id="artists">
+
+            <section className="featured__section" id="artists">
                 <div className="featured__header">
-                    <p>Featured Artists</p>
+                    <p>FEATURED ARTIST</p>
                 </div>
                 <div className="featured__description">
                     <div className="artist__list">
-                        {artists.map((artist, i) => (
+                        {ARTISTS.map((artist, i) => (
                             <p
                                 key={i}
-                                className={`artists__list ${activeArtist?.name === artist.name ? "active" : ""}`}
+                                className={`artists__list ${activeArtist.name === artist.name ? "active" : ""}`}
                                 onClick={() => setActiveArtist(artist)}
                             >
                                 {artist.name}
@@ -336,18 +334,14 @@ export default function Home() {
                     </div>
                     <div className="artist__image">
                         <div className="artist__image__container">
-                            {activeArtist && (
-                                <img
-                                    src={activeArtist.image}
-                                    alt={activeArtist.name}
-                                    style={{ transition: "opacity 0.3s ease" }}
-                                />
-                            )}
+                            <img
+                                src={activeArtist.image}
+                                alt={activeArtist.name}
+                            />
                         </div>
                     </div>
                 </div>
-            </section>
-            <section className="playlists__section" id="playlists">
+            </section>            <section className="playlists__section" id="playlists">
                     <Playlist/>
             </section>
             <section className="gallery__section" id="events">
