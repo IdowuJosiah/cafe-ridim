@@ -6,7 +6,6 @@ export async function GET() {
     const folder = "cafe-riddim/submissions";
     const apiSecret = process.env.CLOUDINARY_API_SECRET!;
 
-    // Manually generate signature — must match exactly what's sent in upload
     const stringToSign = `folder=${folder}&timestamp=${timestamp}${apiSecret}`;
     const signature = crypto
         .createHash("sha256")

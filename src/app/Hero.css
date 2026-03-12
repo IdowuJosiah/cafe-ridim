@@ -1111,26 +1111,15 @@ html {
     }
     .modal__submit {
         background: #591e08;
-        color: white;
-        border: none;
         border-radius: 8px;
         padding: 16px;
-        font-family: "ATP-SugarCrush", sans-serif;
         font-size: 18px;
         cursor: pointer;
         letter-spacing: 0.05em;
-        transition: background 0.2s ease;
         margin-top: 8px;
     }
     .modal__submit:hover {
         background: #bf4011;
-    }
-    .song__links{
-        display: flex;
-        justify-content: space-between;
-    }
-    .modal__upload {
-        position: relative;
     }
 
     .modal__upload input[type="file"] {
@@ -1164,25 +1153,6 @@ html {
     .modal__field textarea.error {
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -13,7 +13,6 @@ export async function POST(req: NextRequest) {
             subject: `New Submission — ${trackTitle} by ${artistName}`,
             html: `
         <div style="font-family: 'Helvetica Neue', Arial, sans-serif; max-width: 600px; margin: 0 auto; background-color: #ffffff; border-radius: 8px; overflow: hidden; border: 1px solid #e5e5e5;">
-  <!-- Header -->
   <div style="background-color: #48523D; padding: 32px 40px;">
     <h1 style="margin: 0; color: #ffffff; font-size: 22px; font-weight: 600; letter-spacing: 0.5px;"> New Music Submission</h1>
   </div>
