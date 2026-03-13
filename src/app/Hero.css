@@ -1,24 +1,35 @@
-@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap');
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    transition: opacity 0.2s ease;
-}
-html {
-    scroll-behavior: smooth;
-}
+
 @font-face {
     font-family: "ATP-SugarCrush";
     src: url("/font/atpfont.otf") format("opentype");
     font-weight: normal;
     font-style: normal;
 }
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+
 .page-width {
-    width: calc(100% - 5rem );
+    width: calc(100% - 5rem);
     margin: 0 auto;
     padding: 10px;
 }
+
+/* ============================================
+   HERO
+   ============================================ */
+
 .hero {
     position: relative;
     width: 100%;
@@ -38,20 +49,21 @@ html {
     z-index: 0;
 }
 
+/* NAV */
 .hero__nav {
     position: fixed;
     display: flex;
-    justify-content: right;
+    justify-content: flex-end;
     align-items: center;
-    padding: 0 60px 0;
+    padding: 0 60px;
     gap: 24px;
     z-index: 1000;
     width: 100%;
     height: 70px;
-    -webkit-text-stroke: .1px #000000;
     background: rgba(10, 10, 10, 0.47);
-
+    -webkit-text-stroke: 0.1px #000000;
 }
+
 .hero__nav-link {
     font-family: "ATP-SugarCrush", sans-serif;
     font-size: 18px;
@@ -59,6 +71,7 @@ html {
     text-decoration: none;
     white-space: nowrap;
     position: relative;
+    transition: opacity 0.2s ease;
 }
 
 .hero__nav-link::after {
@@ -75,6 +88,8 @@ html {
 .hero__nav-link:hover::after {
     width: 100%;
 }
+
+/* LOGO */
 .hero__logo {
     position: relative;
     display: flex;
@@ -88,143 +103,174 @@ html {
     filter: drop-shadow(0px 4px 80px rgba(0, 0, 0, 0.5));
 }
 
+/* DESCRIPTION */
 .hero__description {
     position: relative;
     text-align: center;
-    margin-top: 0;
     padding: 0 20px;
     z-index: 10;
 }
 
 .hero__description p {
+    font-family: "DM Sans", sans-serif;
     font-size: 22px;
     color: white;
     line-height: 1.5;
     font-weight: lighter;
-    font-family: "DM Sans", sans-serif;
 }
-.hero__submit{
+
+/* SUBMIT BADGE */
+.hero__submit {
+    position: absolute;
     width: 100%;
-    justify-content: right;
     display: flex;
+    justify-content: flex-end;
     padding: 20px 60px;
     z-index: 1000;
-    position: absolute;
 }
-.hero__submit img{
+
+.hero__submit img {
     width: 200px;
     height: 200px;
-}
-.hero__submit img:hover{
     cursor: pointer;
 }
-.release__section{
+
+/* ============================================
+   RELEASES
+   ============================================ */
+
+.release__section {
     position: relative;
     display: flex;
     flex-direction: column;
     z-index: 100;
     width: 100%;
-    background: linear-gradient(to bottom, #55240f 15%, #591E08FF 25%, #591e08 99%);
-    padding:10px 20px;
-
+    background: linear-gradient(to bottom, #55240f 15%, #591e08 99%);
+    padding: 10px 20px;
 }
 
-.release-header{
+.release-header {
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 10px 0;
-    z-index: 20;
     margin-top: 10px;
 }
+
 .release-header p {
-    color: #ffffff;
-    font-size: 64px;
     font-family: "ATP-SugarCrush", sans-serif;
+    font-size: 64px;
+    color: #ffffff;
 }
-.featured__section{
-    background: linear-gradient(to bottom, #591E08FF 25%, #591e08 99%);
+
+/* ============================================
+   FEATURED ARTISTS
+   ============================================ */
+
+.featured__section {
     display: flex;
     flex-direction: column;
-    /*align-items: center;*/
+    background: linear-gradient(to bottom, #591e08 25%, #591e08 99%);
     padding: 20px 60px;
     width: 100%;
 }
-.featured__header{
+
+.featured__header {
     padding: 20px 0;
-    justify-content: left;
     display: flex;
+    justify-content: flex-start;
     width: 45%;
     border-bottom: 1px solid white;
 }
-.featured__header p{
+
+.featured__header p {
     font-family: "ATP-SugarCrush", sans-serif;
     font-size: 64px;
     color: white;
-
 }
-.featured__description{
+
+.featured__description {
     display: flex;
     gap: 30px;
     justify-content: space-between;
 }
-.artist__list{
+
+.artist__list {
     width: 45%;
     display: flex;
     flex-direction: column;
 }
 
-.artist__list p{
-    color: transparent;
-    -webkit-text-stroke: 1px white;
+.artist__list p {
     font-family: "ATP-SugarCrush", sans-serif;
     font-size: 45px;
+    color: transparent;
+    -webkit-text-stroke: 1px white;
     border-bottom: 1px solid white;
     display: flex;
     align-items: center;
     padding: 20px 0;
     margin: 0;
-}
-.artist__list p:hover{
     cursor: pointer;
-    -webkit-text-fill-color: #fefefe !important;
+    transition: -webkit-text-fill-color 0.2s ease;
 }
-.artist__image{
-    width: 55%;
 
+.artist__list p:hover,
+.artist__list p.active {
+    -webkit-text-fill-color: #fefefe;
 }
-.artist__image__container{
+
+.artist__image {
+    width: 55%;
+}
+
+.artist__image__container {
     width: 100%;
     display: flex;
-    justify-content: right;
+    justify-content: flex-end;
 }
-.artist__image__container img{
+
+.artist__image__container img {
     width: 80%;
+    transition: opacity 0.3s ease;
 }
-.playlists__section{
-    background: linear-gradient(to bottom, #591E08FF 25%, #6B331E 50%, #CD9A86 95%);
+
+/* ============================================
+   PLAYLISTS
+   ============================================ */
+
+.playlists__section {
+    background: linear-gradient(to bottom, #591e08 25%, #6b331e 50%, #cd9a86 95%);
 }
-.gallery__section{
-    padding: 40px 60px;
+
+/* ============================================
+   GALLERY
+   ============================================ */
+
+.gallery__section {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(to bottom, #CD9A86 25%, #FFF1EA 50%, #FFF1EA 95%)
+    padding: 40px 60px;
+    background: linear-gradient(to bottom, #cd9a86 25%, #fff1ea 50%, #fff1ea 95%);
 }
-.gallery__header{
+
+.gallery__header {
     padding: 40px 0;
     display: flex;
     align-items: center;
     justify-content: center;
 }
-.gallery__header p{
-    font-size: 64px;
+
+.gallery__header p {
     font-family: "ATP-SugarCrush", sans-serif;
-    color: #6E250A;
+    font-size: 64px;
+    color: #6e250a;
 }
-.gallery__grid__section{
+
+.gallery__grid__section {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -232,92 +278,22 @@ html {
     width: 100%;
     gap: 5px;
 }
-.grid__top__half{
+
+.grid__top__half {
     display: flex;
     align-items: center;
-    gap : 5px ;
+    gap: 5px;
     width: 100%;
 }
-.gt{
-}
-.image__one{
-    width: 20%;
-    height: 200px;
-}
-.image__one img{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
 
-}
-.image__four__section{
-    width: 41%;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 5px ;
-    justify-content: space-between;
-}
-
-.image__four{
-    width: 49%;
-    height: 95px;
-}
-.image__four img{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-
-}
-.grid__bottom__half{
+.grid__bottom__half {
     display: flex;
     align-items: center;
     width: 100%;
     gap: 10px;
 }
-.image__nine{
-    width: 30%;
-    height: 200px;
-}
-.image__nine img{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
 
-}
-.image__ten{
-    width: 10%;
-    height: 200px;
-
-}
-.image__ten img{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-
-}
-.image__ten__section{
-    width: 10%;
-    height: 200px;
-    display: flex;
-    flex-direction: column;
-    gap:2px;
-
-}
-.ten__section__div{
-    width: 100%;
-    height: 33%;
-
-}
-.ten__section__div img{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-}
+/* Gallery image slots — shimmer while loading */
 .image__one,
 .image__four,
 .image__nine,
@@ -329,60 +305,138 @@ html {
 }
 
 @keyframes shimmer {
-    0% { background-position: 200% 0; }
+    0%   { background-position: 200% 0; }
     100% { background-position: -200% 0; }
 }
-.footer__section{
-    background: #FFF1EA ;
+
+.image__one {
+    width: 20%;
+    height: 200px;
+}
+
+.image__four__section {
+    width: 41%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    justify-content: space-between;
+}
+
+.image__four {
+    width: 49%;
+    height: 95px;
+}
+
+.image__nine {
+    width: 30%;
+    height: 200px;
+}
+
+.image__ten {
+    width: 10%;
+    height: 200px;
+}
+
+.image__ten__section {
+    width: 10%;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.ten__section__div {
+    width: 100%;
+    height: 33%;
+}
+
+/* Images sit above shimmer */
+.image__one img,
+.image__four img,
+.image__nine img,
+.image__ten img,
+.ten__section__div img {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+
+.footer__section {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: 40px 0;
+    background: #fff1ea;
 }
-.footer__image{
+
+.footer__image {
     width: 250px;
     height: 250px;
 }
-.footer__image img{
+
+.footer__image img {
     cursor: pointer;
 }
-.spin {
-    animation: spin 10s linear infinite;
+
+.footer__log img {
+    max-width: 300px;
 }
 
-@keyframes spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-}
-.socials__section{
+.socials__section {
     display: flex;
-    gap: 10px ;
+    gap: 10px;
     align-items: center;
 }
 
-.socials__section p{
-    color: #591E08;
+.socials__section p {
     font-family: "ATP-SugarCrush", sans-serif;
     font-size: 24px;
+    color: #591e08;
 }
-.socials__base{
+
+.socials__base {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background: #591E08;
+    background: #591e08;
     color: white;
 }
-.footer__wts p{
-    font-size: 36px;
+
+.footer__wts p {
     font-family: "ATP-SugarCrush", sans-serif;
+    font-size: 36px;
     color: #000000;
     padding-top: 30px;
 }
 
+/* ============================================
+   SPIN ANIMATION
+   ============================================ */
+
+.spin {
+    animation: spin 10s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+}
+
+/* ============================================
+   MODAL
+   ============================================ */
 
 .modal__overlay {
     position: fixed;
@@ -396,8 +450,8 @@ html {
 }
 
 .modal {
-    border: 1px solid hsl(0, 0%, 100%, 0.3);
     background: hsl(0, 0%, 100%, 0.1);
+    border: 1px solid hsl(0, 0%, 100%, 0.3);
     backdrop-filter: blur(2px);
     border-radius: 36px;
     padding: 48px;
@@ -406,7 +460,7 @@ html {
     position: relative;
     max-height: 90vh;
     overflow-y: auto;
-    scrollbar-width: none ;
+    scrollbar-width: none;
 }
 
 .modal__close {
@@ -418,6 +472,7 @@ html {
     font-size: 20px;
     cursor: pointer;
     color: #591e08;
+    transition: opacity 0.2s ease;
 }
 
 .modal__close:hover {
@@ -427,16 +482,16 @@ html {
 .modal__title {
     font-family: "DM Sans", sans-serif;
     font-size: 40px;
-    color: #FFF1EA;
+    color: #fff1ea;
     margin: 0 0 8px;
 }
 
 .modal__subtitle {
+    font-family: "DM Sans", sans-serif;
     font-size: 16px;
-    color: #FFF1EA;
+    color: #fff1ea;
     opacity: 0.7;
     margin: 0 0 32px;
-    font-family: "DM Sans", sans-serif;
 }
 
 .modal__form {
@@ -454,7 +509,7 @@ html {
 .modal__field label {
     font-family: "DM Sans", sans-serif;
     font-size: 14px;
-    color: #FFF1EA;
+    color: #fff1ea;
     letter-spacing: 0.05em;
 }
 
@@ -464,40 +519,29 @@ html {
     border: 1px solid hsl(0, 0%, 100%, 0.3);
     border-radius: 8px;
     padding: 12px 16px;
+    font-family: "DM Sans", sans-serif;
     font-size: 16px;
-    color: #FFF1EA;
+    color: #fff1ea;
     outline: none;
-    font-family: "DM Sans";
     resize: none;
 }
 
 .modal__field input:focus,
 .modal__field textarea:focus {
-    border-color: #FFF1EA;
+    border-color: #fff1ea;
     box-shadow: 0 0 0 3px rgba(191, 64, 17, 0.15);
 }
 
-.modal__submit {
-    background: #591e08;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    padding: 16px;
-    font-family: "DM Sans", sans-serif;
-    font-size: 18px;
-    cursor: pointer;
-    letter-spacing: 0.05em;
-    transition: background 0.2s ease;
-    margin-top: 8px;
+.modal__field input.error,
+.modal__field textarea.error {
+    border-color: #c0392b;
 }
 
-.modal__submit:hover {
-    background: #bf4011;
-}
-.song__links{
+.song__links {
     display: flex;
     justify-content: space-between;
 }
+
 .modal__upload {
     position: relative;
 }
@@ -518,15 +562,15 @@ html {
     align-items: center;
     justify-content: center;
     gap: 8px;
-    border: 1.5px dashed #FFF1EA;
+    border: 1.5px dashed #fff1ea;
     border-radius: 8px;
     padding: 32px 16px;
-    cursor: pointer;
     font-family: "DM Sans", sans-serif;
     font-size: 16px;
     color: #591e08;
     text-align: center;
     transition: background 0.2s ease;
+    cursor: pointer;
 }
 
 .modal__upload-label:hover {
@@ -538,42 +582,57 @@ html {
     opacity: 0.6;
     letter-spacing: 0.05em;
 }
-.field__error {
-    color: #c0392b;
-    font-size: 12px;
+
+.modal__submit {
+    background: #591e08;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 16px;
     font-family: "DM Sans", sans-serif;
+    font-size: 18px;
+    cursor: pointer;
+    letter-spacing: 0.05em;
+    margin-top: 8px;
+    transition: background 0.2s ease;
+}
+
+.modal__submit:hover {
+    background: #bf4011;
+}
+
+.modal__submit:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.modal__success {
+    text-align: center;
+    padding: 40px 0;
+    font-family: "ATP-SugarCrush", sans-serif;
+    font-size: 24px;
+    color: #fff1ea;
+}
+
+.modal__error,
+.field__error {
+    font-family: "DM Sans", sans-serif;
+    font-size: 12px;
+    color: #c0392b;
     margin-top: 4px;
 }
 
-.modal__field input.error,
-.modal__field textarea.error {
-    border-color: #c0392b;
-}
+/* ============================================
+   TABLET — max-width: 992px
+   ============================================ */
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* Tablet */
 @media (max-width: 992px) {
     .hero {
-        position: relative;
-        width: 100%;
         min-height: 80vh;
     }
 
-
     .hero__nav {
-        padding: 20px 60px 0;
+        padding: 0 60px;
         gap: 20px;
     }
 
@@ -581,347 +640,94 @@ html {
         font-size: 12px;
     }
 
-    .hero__tagline {
-        position: absolute;
-        top: 9%;
-        left: 20%;
-    }
-
-    .hero__tagline text {
-        font-size: 18px;
-        letter-spacing: 10px;
-    }
-
-    .text{
-        font-size: 18px;
-        fill: white;
-        letter-spacing: 0.1em;
-        color: #1a0a02;
-    }
-
     .hero__logo {
         margin-top: 200px;
-        z-index: 10;
-    }
-
-    .hero__logo img {
-        width: 95%;
-        filter: drop-shadow(0px 4px 80px rgba(0, 0, 0, 0.5));
-    }
-
-    .hero__description {
-        margin-top: 32px;
-        padding: 0 20px;
-
     }
 
     .hero__description p {
         font-size: 18px;
-        line-height: 1.5;
     }
-    .hero__submit{
+
+    .hero__submit {
         padding: 20px 50px;
     }
-    .hero__submit img{
+
+    .hero__submit img {
         width: 180px;
         height: 180px;
     }
-    .release__section{
-        padding:1px 20px;
 
-    }
-
-    .release-header{
-        padding: 1px 0;
-        margin-top: 1px;
-    }
     .release-header p {
         font-size: 60px;
     }
 
-
-    .featured__section{
-        background: linear-gradient(to bottom, #591E08FF 25%, #591e08 99%);
+    .featured__section {
         padding: 20px 50px;
     }
-    .featured__header{
-        padding: 20px 0;
-        width: 45%;
-    }
-    .featured__header p{
+
+    .featured__header p {
         font-size: 45px;
     }
-    .featured__description{
-        display: flex;
-        gap: 30px;
-        justify-content: space-between;
-    }
-    .artist__list{
-        width: 45%;
-        display: flex;
-        flex-direction: column;
-    }
-    .artist__list p{
+
+    .artist__list p {
         font-size: 36px;
         padding: 15px 0;
-        margin: 0;
     }
-    .artist__image{
-        width: 55%;
 
-    }
-    .artist__image__container{
-        width: 100%;
-        display: flex;
-        justify-content: right;
-    }
-    .artist__image__container img{
+    .artist__image__container img {
         width: 100%;
     }
-    .playlists__section{
-        background: linear-gradient(to bottom, #591E08FF 25%, #6B331E 50%, #CD9A86 95%);
-    }
-    .gallery__section{
+
+    .gallery__section {
         padding: 30px 50px;
-        display: flex;
-
     }
-    .gallery__header{
-        padding: 40px 0;
 
-    }
-    .gallery__header p{
+    .gallery__header p {
         font-size: 64px;
+    }
 
-    }
-    .gallery__grid__section{
-        width: 100%;
-        gap: 5px;
-    }
-    .grid__top__half{
-        display: flex;
-        align-items: center;
-        gap :5px ;
-        width: 100%;
-    }
-    .gt{
-        background-color: #591E08FF;
-    }
-    .image__one{
-        width: 20%;
-        height: 200px;
-    }
-    .image__four__section{
-        width: 40%;
-        gap: 5px ;
-    }
-    .image__four{
+    .image__four {
         width: 48%;
-        height: 95px;
     }
-    .grid__bottom__half{
-        gap: 5px;
-    }
-    .image__nine{
-        width: 30%;
-        height: 200px;
-    }
-    .image__ten{
-        width: 10%;
-        height: 200px;
 
-    }
-    .image__ten__section{
-        width: 10%;
-        height: 200px;
-        display: flex;
-        flex-direction: column;
-        gap:2px;
-
-    }
-    .ten__section__div{
-        width: 100%;
-        height: 33%;
-        background: #6E250A;
-
-    }
-    .footer__section{
-        justify-content: center;
-        padding: 40px 0;
-    }
-    .footer__image{
+    .footer__image {
         width: 250px;
         height: 250px;
     }
-    .socials__section{
-        gap: 8px ;
-    }
 
-    .socials__section p{
+    .socials__section p {
         font-size: 20px;
     }
-    .socials__base{
-        width: 40px;
-        height: 40px;
 
-    }
-    .footer__wts p{
+    .footer__wts p {
         font-size: 36px;
-        padding-top: 30px;
-    }
-
-
-    .modal__overlay {
     }
 
     .modal {
-        border: 1px solid hsl(0, 0%, 100%, 0.3);
-        background: hsl(0, 0%, 100%, 0.1);
-        backdrop-filter: blur(2px);
-        border-radius: 36px;
-        padding: 48px;
-        width: 100%;
         max-width: 840px;
-        position: relative;
-        max-height: 90vh;
-        overflow-y: auto;
-        scrollbar-width: none ;
+        padding: 48px;
     }
 
-    .modal__close {
-        position: absolute;
-        top: 20px;
-        right: 24px;
-        background: none;
-        border: none;
-        font-size: 20px;
-        cursor: pointer;
-        color: #591e08;
-    }
-    .modal__close:hover {
-        opacity: 0.7;
-    }
     .modal__title {
         font-size: 40px;
-        margin: 0 0 8px;
     }
+
     .modal__subtitle {
         font-size: 16px;
-        margin: 0 0 32px;
-    }
-    .modal__form {
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-    }
-    .modal__field {
-        gap: 6px;
-    }
-    .modal__field label {
-        font-size: 14px;
-        letter-spacing: 0.05em;
-        font-family: "DM Sans", sans-serif;
-    }
-    .modal__field input,
-    .modal__field textarea {
-        padding: 12px 16px;
-        font-size: 16px;
-       ;
-    }
-    .modal__field input:focus,
-    .modal__field textarea:focus {
-        border-color: #FFF1EA;
-    }
-    .modal__submit {
-        border-radius: 8px;
-        padding: 16px;
-        font-family: "DM Sans", sans-serif;
-        font-size: 18px;
-        margin-top: 8px;
-    }
-    .modal__submit:hover {
-        background: #bf4011;
-    }
-    .song__links{
-        display: flex;
-        justify-content: space-between;
-    }
-    .modal__upload {
-        position: relative;
-    }
-
-    .modal__upload input[type="file"] {
-        position: absolute;
-        inset: 0;
-        opacity: 0;
-        cursor: pointer;
-        width: 100%;
-        height: 100%;
-        z-index: 2;
-    }
-    .modal__upload-label {
-
-        gap: 8px;
-        border: 1.5px dashed #FFF1EA;
-        border-radius: 8px;
-        padding: 32px 16px;
-        font-size: 16px;
-    }
-    .modal__upload-label span {
-        font-size: 12px;
-        opacity: 0.6;
-        letter-spacing: 0.05em;
-    }
-    .field__error {
-        font-size: 12px;
-        font-family: "DM S;ans", sans-serif;
-        margin-top: 4px;
-    }
-    .modal__field input.error,
-    .modal__field textarea.error {
     }
 }
 
+/* ============================================
+   LARGE PHONES — max-width: 768px
+   ============================================ */
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* Large phones */
 @media (max-width: 768px) {
-
     .hero {
         min-height: 60vh;
     }
 
     .hero__nav {
-        padding: 20px 50px 0;
+        padding: 0 50px;
         gap: 20px;
     }
 
@@ -933,258 +739,88 @@ html {
         margin-top: 150px;
     }
 
-    .hero__description {
-        margin-top: 12px;
-    }
-
     .hero__description p {
         font-size: 15px;
     }
-    .hero__submit img{
+
+    .hero__submit img {
         width: 160px;
         height: 160px;
     }
-    .release__section{
-        padding:1px 20px;
 
-    }
-    .release-header{
-        padding: 1px 0;
-        margin-top: 1px;
-    }
     .release-header p {
         font-size: 50px;
     }
 
-
-    .featured__section{
-        background: linear-gradient(to bottom, #591E08FF 25%, #591e08 99%);
+    .featured__section {
         padding: 15px 45px;
-        gap:5px
+        gap: 5px;
     }
-    .featured__header{
-        padding: 20px 0;
-        justify-content: left;
-        display: flex;
-    }
-    .featured__header p{
+
+    .featured__header p {
         font-size: 35px;
     }
-    .featured__description{
-        display: flex;
+
+    .featured__description {
         gap: 10px;
-        justify-content: space-between;
     }
-    .artist__list{
-        width: 45%;
-        display: flex;
-        flex-direction: column;
-    }
-    .artist__list p{
+
+    .artist__list p {
         font-size: 26px;
         padding: 15px 0;
     }
-    .artist__image{
+
+    .artist__image {
         width: 50%;
-
-    }
-    .artist__image__container{
-        width: 100%;
-        display: flex;
-        justify-content: right;
-    }
-    .artist__image__container img{
-        width: 100%;
     }
 
-    .gallery__section{
+    .gallery__section {
         padding: 10px 45px;
-        display: flex;
-
     }
-    .gallery__header{
-        padding: 20px 0;
 
-    }
-    .gallery__header p{
+    .gallery__header p {
         font-size: 50px;
-
-    }
-    .gallery__grid__section{
-    }
-    .image__four__section{
-        width: 40%;
-        gap: 5px ;
-    }
-    .image__four{
-        width: 48%;
-        height: 95px;
     }
 
-    .ten__section__div{
-        width: 100%;
-        height: 33%;
-        background: #6E250A;
-
-    }
-    .footer__section{
+    .footer__section {
         padding: 20px 0;
     }
-    .footer__image{
+
+    .footer__image {
         width: 200px;
         height: 200px;
     }
-    .socials__section{
-        gap: 5px ;
-    }
 
-    .socials__section p{
+    .socials__section p {
         font-size: 16px;
     }
-    .socials__base{
-        width: 40px;
-        height: 40px;
 
-    }
-    .footer__wts p{
+    .footer__wts p {
         font-size: 28px;
         padding-top: 20px;
     }
 
-
-    .modal__overlay {
-    }
-
     .modal {
-        border-radius: 36px;
-        padding: 35px;
-        width: 100%;
         max-width: 680px;
-        max-height: 90vh;
+        padding: 35px;
     }
 
-    .modal__close {
-        top: 20px;
-        right: 24px;
-        background: none;
-        border: none;
-        font-size: 20px;
-        cursor: pointer;
-        color: #591e08;
-    }
-    .modal__close:hover {
-        opacity: 0.7;
-    }
     .modal__title {
-        font-family: "ATP-SugarCrush", sans-serif;
-        font-size: 40px;
-        color: #FFF1EA;
-        margin: 0 0 8px;
-    }
-    .modal__subtitle {
-        font-size: 16px;
-        margin: 0 0 32px;
-        font-family: "DM Sans", sans-serif;
-    }
-    .modal__form {
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-    }
-    .modal__field {
-        gap: 6px;
-    }
-    .modal__field label {
-        font-size: 14px;
-        letter-spacing: 0.05em;
-    }
-    .modal__field input,
-    .modal__field textarea {
-        padding: 12px 16px;
-        font-size: 16px;
-    ;
-    }
-    .modal__field input:focus,
-    .modal__field textarea:focus {
-        border-color: #FFF1EA;
-        box-shadow: 0 0 0 3px rgba(191, 64, 17, 0.15);
-    }
-    .modal__submit {
-        background: #591e08;
-        border-radius: 8px;
-        padding: 16px;
-        font-size: 18px;
-        cursor: pointer;
-        letter-spacing: 0.05em;
-        margin-top: 8px;
-    }
-    .modal__submit:hover {
-        background: #bf4011;
-    }
-
-    .modal__upload input[type="file"] {
-        position: absolute;
-        inset: 0;
-        opacity: 0;
-        cursor: pointer;
-        width: 100%;
-        height: 100%;
-        z-index: 2;
-    }
-    .modal__upload-label {
-
-        gap: 8px;
-        border: 1.5px dashed #FFF1EA;
-        border-radius: 8px;
-        padding: 32px 16px;
-        font-size: 16px;
-    }
-    .modal__upload-label span {
-        font-size: 12px;
-        opacity: 0.6;
-        letter-spacing: 0.05em;
-    }
-    .field__error {
-        font-size: 12px;
-        font-family: "DM S;ans", sans-serif;
-        margin-top: 4px;
-    }
-    .modal__field input.error,
-    .modal__field textarea.error {
+        font-size: 32px;
     }
 }
 
+/* ============================================
+   MOBILE — max-width: 486px
+   ============================================ */
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* Mobile */
 @media (max-width: 486px) {
     .hero {
-        position: relative;
         min-height: 50vh;
     }
+
     .hero__nav {
-        padding: 10px 20px 0;
+        padding: 0 20px;
         gap: 20px;
     }
 
@@ -1192,234 +828,123 @@ html {
         font-size: 10px;
     }
 
-
     .hero__logo {
         margin-top: 120px;
-    }
-
-    .hero__description {
-        margin-top: 10px;
     }
 
     .hero__description p {
         font-size: 9px;
     }
-    .hero__submit{
+
+    .hero__submit {
         padding: 10px;
     }
-    .hero__submit img{
+
+    .hero__submit img {
         width: 100px;
         height: 100px;
     }
-    .release__section{
-        padding:1px 10px;
-        margin-top: -50px !important;
 
+    .release__section {
+        padding: 1px 10px;
+    }
 
-    }
-    .release-header{
-        padding: 1px 0;
-        margin-top: 1px;
-    }
     .release-header p {
         font-size: 30px;
     }
 
-
-    .featured__section{
+    .featured__section {
         padding: 20px 10px;
     }
-    .featured__header{
-        padding: 10px 0;
-    }
-    .featured__header p{
+
+    .featured__header p {
         font-size: 25px;
     }
-    .featured__description{
+
+    .featured__description {
         gap: 5px;
     }
-    .artist__list{
-        width: 45%;
-    }
-    .artist__list p{
+
+    .artist__list p {
         font-size: 20px;
         padding: 10px 0;
     }
-    .artist__image{
-        width: 50%;
 
-    }
-    .artist__image__container{
-        width: 100%;
-    }
-    .artist__image__container img{
+    .artist__image__container img {
         width: 100%;
         height: 100%;
     }
 
-    .gallery__section{
+    .gallery__section {
         padding: 10px 0;
-
     }
-    .gallery__header{
-        padding: 0;
 
-    }
-    .gallery__header p{
+    .gallery__header p {
         font-size: 45px;
-
     }
-    .gallery__grid__section{
+
+    .gallery__grid__section {
         padding: 0 20px;
     }
-    .image__four__section{
-        width: 40%;
-        gap: 5px ;
-    }
-    .image__four{
-        width: 48%;
-        height: 95px;
-    }
 
-    .ten__section__div{
-        width: 100%;
-        height: 33%;
-        background: #6E250A;
-
-    }
-    .footer__section{
+    .footer__section {
         padding: 20px 0;
     }
-    .footer__image{
+
+    .footer__image {
         width: 100px;
         height: 100px;
     }
-    .socials__section{
-        gap: 5px ;
+
+    .socials__section {
+        gap: 5px;
     }
 
-    .socials__section p{
+    .socials__section p {
         font-size: 10px;
     }
-    .socials__base{
+
+    .socials__base {
         width: 20px;
         height: 20px;
         font-size: 10px;
-
     }
-    .footer__wts p{
+
+    .footer__wts p {
         font-size: 18px;
         padding-top: 15px;
     }
 
-
-    .modal__overlay {
-    }
-
     .modal {
-        border-radius: 36px;
-        padding: 25px 20px;
-        width: 100%;
         max-width: 400px;
         max-height: 70vh;
+        padding: 25px 20px;
+        border-radius: 24px;
     }
 
     .modal__close {
-        top: 20px;
-        right: 24px;
-        background: none;
-        border: none;
         font-size: 10px;
-        cursor: pointer;
-        color: #591e08;
     }
-    .modal__close:hover {
-        opacity: 0.7;
-    }
+
     .modal__title {
         font-size: 20px;
-        margin: 0 0 8px;
     }
+
     .modal__subtitle {
         font-size: 12px;
-        margin: 0 0 32px;
-        font-family: "Lexend", sans-serif;
     }
+
     .modal__form {
-        display: flex;
-        flex-direction: column;
         gap: 15px;
     }
-    .modal__field {
-        gap: 6px;
-    }
+
     .modal__field label {
         font-size: 12px;
-        letter-spacing: 0.05em;
     }
+
     .modal__field input,
     .modal__field textarea {
         padding: 10px 14px;
         font-size: 10px;
-    ;
-    }
-    .modal__field input:focus,
-    .modal__field textarea:focus {
-        border-color: #FFF1EA;
-        box-shadow: 0 0 0 3px rgba(191, 64, 17, 0.15);
-    }
-    .modal__submit {
-        background: #591e08;
-        color: white;
-        border: none;
-        border-radius: 8px;
-        padding: 16px;
-        font-family: "ATP-SugarCrush", sans-serif;
-        font-size: 18px;
-        cursor: pointer;
-        letter-spacing: 0.05em;
-        transition: background 0.2s ease;
-        margin-top: 8px;
-    }
-    .modal__submit:hover {
-        background: #bf4011;
-    }
-    .song__links{
-        display: flex;
-        justify-content: space-between;
-    }
-    .modal__upload {
-        position: relative;
-    }
-
-    .modal__upload input[type="file"] {
-        position: absolute;
-        inset: 0;
-        opacity: 0;
-        cursor: pointer;
-        width: 100%;
-        height: 100%;
-        z-index: 2;
-    }
-    .modal__upload-label {
-
-        gap: 8px;
-        border: 1.5px dashed #FFF1EA;
-        border-radius: 8px;
-        padding: 32px 16px;
-        font-size: 16px;
-    }
-    .modal__upload-label span {
-        font-size: 12px;
-        opacity: 0.6;
-        letter-spacing: 0.05em;
-    }
-    .field__error {
-        font-size: 12px;
-        font-family: "DM S;ans", sans-serif;
-        margin-top: 4px;
-    }
-    .modal__field input.error,
-    .modal__field textarea.error {
     }
 }

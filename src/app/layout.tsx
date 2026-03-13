@@ -1,3 +1,5 @@
+
+
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
@@ -27,6 +29,8 @@ export default function RootLayout({
     <html lang="en">
         <head>
             <link rel="preload" as="image" href="/bg.jpg" />
+            <link rel="preconnect" href="https://fonts.googleapis.com" />
+            <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet" />
         </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
