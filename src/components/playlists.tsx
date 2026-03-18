@@ -2,15 +2,15 @@ import "./playlist.css";
 
 const playlists = [
     {
-        id: "37i9dQZF1DZ06evO21rV4I",
+        id: "37i9dQZF1E4vPyrvVnZeyH",
         title: "Guilty Pleasures",
     },
     {
-        id: "37i9dQZF1E4wl2HLNaYsgY",
+        id: "016aj4GM4dkUFS68JmsG0Z",
         title: "Playlist 2",
     },
     {
-        id: "37i9dQZF1DXcBWIGoYBM5M",
+        id: "6IKGONJaYnsQSLmlSkSyTc",
         title: "Playlist 3",
     },
 ];

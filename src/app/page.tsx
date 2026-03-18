@@ -315,7 +315,6 @@ export default function Home() {
                     </Release>
                 </div>
             </section>
-
             <section className="featured__section" id="artists">
                 <div className="featured__header">
                     <p>FEATURED ARTIST</p>
