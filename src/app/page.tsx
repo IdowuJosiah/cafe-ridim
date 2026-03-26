@@ -256,7 +256,6 @@ export default function Home() {
                     {[
                         { label: "SUBMIT MUSIC", href: "#submit" },
                         { label: "RELEASES", href: "#releases" },
-                        { label: "ARTISTES", href: "#artists" },
                         { label: "PLAYLISTS", href: "#playlists" },
                         { label: "EVENTS", href: "#events" },
                         { label: "ABOUT US", href: "#about" },
@@ -315,32 +314,34 @@ export default function Home() {
                     </Release>
                 </div>
             </section>
-            <section className="featured__section" id="artists">
-                <div className="featured__header">
-                    <p>FEATURED ARTIST</p>
-                </div>
-                <div className="featured__description">
-                    <div className="artist__list">
-                        {ARTISTS.map((artist, i) => (
-                            <p
-                                key={i}
-                                className={`artists__list ${activeArtist.name === artist.name ? "active" : ""}`}
-                                onClick={() => setActiveArtist(artist)}
-                            >
-                                {artist.name}
-                            </p>
-                        ))}
-                    </div>
-                    <div className="artist__image">
-                        <div className="artist__image__container">
-                            <img
-                                src={activeArtist.image}
-                                alt={activeArtist.name}
-                            />
-                        </div>
-                    </div>
-                </div>
-            </section>            <section className="playlists__section" id="playlists">
+            {/*<section className="featured__section" id="artists">*/}
+            {/*    <div className="featured__header">*/}
+            {/*        <p>FEATURED ARTIST</p>*/}
+            {/*    </div>*/}
+            {/*    <div className="featured__description">*/}
+            {/*        <div className="artist__list">*/}
+            {/*            {ARTISTS.map((artist, i) => (*/}
+            {/*                <p*/}
+            {/*                    key={i}*/}
+            {/*                    className={`artists__list ${activeArtist.name === artist.name ? "active" : ""}`}*/}
+            {/*                    onClick={() => setActiveArtist(artist)}*/}
+            {/*                >*/}
+            {/*                    {artist.name}*/}
+            {/*                </p>*/}
+            {/*            ))}*/}
+            {/*        </div>*/}
+            {/*        <div className="artist__image">*/}
+            {/*            <div className="artist__image__container">*/}
+            {/*                <img*/}
+            {/*                    src={activeArtist.image}*/}
+            {/*                    alt={activeArtist.name}*/}
+            {/*                />*/}
+            {/*            </div>*/}
+            {/*        </div>*/}
+            {/*    </div>*/}
+            {/*</section> */}
+
+            <section className="playlists__section" id="playlists">
                     <Playlist/>
             </section>
             <section className="gallery__section" id="events">

@@ -3,10 +3,10 @@ import { useState, useEffect } from "react";
 import { Track, getSpotifyToken, getTrack } from "../lib/spotify";
 import "./release.scss"
 const TRACK_IDS = [
-    "15pYj5ZiUJgBydzD7w6NbJ",
-    "7Gu2envDOkET7Tq1SEwx1s",
-    "5Iku7QUJV5KXyT5fVHAxcd",
-    "3JN8aItsGqTWapuekI8vxM",
+    "6UhI1tdJO089lpNTIiF31d",
+    "4qmUlH3j4yGfS73t18vug9",
+    "1UUBVecT2fh0Mn0XPGoWtm",
+    // "3JN8aItsGqTWapuekI8vxM",
 ];
 
 export default function Release() {
