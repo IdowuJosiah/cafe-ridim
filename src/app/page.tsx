@@ -291,6 +291,10 @@ export default function Home() {
                         create meaningful real-world experiences around the sound.
                     </p>
                 </div>
+                <div className="hero__genres">
+                    <h2 className="hero__genres-title">Genres We Play In</h2>
+                    <p className="hero__genres-list">Afrohouse · 3-Step · Mara · GQOM · Melodic House · Afro Tech · Tribal House</p>
+                </div>
                 <div className="hero__submit">
                     <img
                         src={heroSubmitImage}
@@ -302,6 +306,7 @@ export default function Home() {
                         }}
                     />
                 </div>
+
             </section>
             <section className="release__section" id="releases">
                 <div className="release-header">

@@ -125,13 +125,13 @@ html {
     width: 100%;
     display: flex;
     justify-content: flex-end;
-    padding: 20px 60px;
+    padding: 0px 60px;
     z-index: 1000;
 }
 
 .hero__submit img {
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
     cursor: pointer;
 }
 
@@ -837,12 +837,12 @@ html {
     }
 
     .hero__submit {
-        padding: 10px;
+        padding: 0 10px;
     }
 
     .hero__submit img {
-        width: 100px;
-        height: 100px;
+        width: 60px;
+        height: 60px;
     }
 
     .release__section {
@@ -884,9 +884,11 @@ html {
     }
 
     .gallery__grid__section {
-        padding: 0 20px;
+        padding: 0 10px;
     }
-
+    .grid__bottom__half{
+        gap: 3px;
+    }
     .footer__section {
         padding: 20px 0;
     }
@@ -946,5 +948,77 @@ html {
     .modal__field textarea {
         padding: 10px 14px;
         font-size: 10px;
+    }
+}
+
+
+
+.hero__genres {
+    position: relative;
+    text-align: center;
+    padding: 16px 20px;
+    margin-top: 32px; /* space from description above */
+    z-index: 10;
+}
+
+.hero__genres-title {
+    font-family: "DM Sans", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.5);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 10px;
+}
+
+.hero__genres-list {
+    font-family: "DM Sans", sans-serif;
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.7);
+    letter-spacing: 0.08em;
+    font-weight: 300;
+}
+
+/* Tablet */
+@media (max-width: 992px) {
+    .hero__genres {
+        margin-top: 24px;
+    }
+    .hero__genres-title {
+        font-size: 13px;
+    }
+    .hero__genres-list {
+        font-size: 14px;
+    }
+}
+
+/* Large phones */
+@media (max-width: 768px) {
+    .hero__genres {
+        margin-top: 20px;
+    }
+    .hero__genres-title {
+        font-size: 12px;
+    }
+    .hero__genres-list {
+        font-size: 12px;
+        letter-spacing: 0.04em;
+    }
+}
+
+/* Mobile */
+@media (max-width: 486px) {
+    .hero__genres {
+        margin-top: 10px;
+        padding: 5px 16px;
+    }
+    .hero__genres-title {
+        font-size: 10px;
+        letter-spacing: 0.1em;
+    }
+    .hero__genres-list {
+        font-size: 9px;
+        letter-spacing: 0.03em;
+        line-height: 1.6;
     }
 }

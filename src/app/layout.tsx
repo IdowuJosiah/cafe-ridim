@@ -18,9 +18,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
     title: "Cafe Ridim Website",
     description: "Official Cafe Ridim Website",
-    icons: {
-        icon: "/favicon.ico",
-    },
+
 };;
 
 export default function RootLayout({
