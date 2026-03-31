@@ -1022,3 +1022,74 @@ html {
         line-height: 1.6;
     }
 }
+
+/* ============================================
+   VIDEO SECTION
+   ============================================ */
+
+.video__section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 60px 60px 40px;
+    background: linear-gradient(to bottom, #591e08 25%, #cd9a86 95%);
+}
+
+.video__header {
+    padding: 0 0 40px;
+}
+
+.video__header p {
+    font-family: "ATP-SugarCrush", sans-serif;
+    font-size: 64px;
+    color: white;
+    text-align: center;
+}
+
+.video__container {
+    width: 100%;
+    max-width: 1000px;
+    aspect-ratio: 16 / 9;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.video__container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+}
+
+/* Tablet */
+@media (max-width: 992px) {
+    .video__section {
+        padding: 40px 50px 30px;
+    }
+    .video__header p {
+        font-size: 50px;
+    }
+}
+
+/* Large phones */
+@media (max-width: 768px) {
+    .video__section {
+        padding: 30px 40px 20px;
+    }
+    .video__header p {
+        font-size: 40px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 486px) {
+    .video__section {
+        padding: 20px 10px 15px;
+    }
+    .video__header p {
+        font-size: 30px;
+    }
+    .video__container {
+        border-radius: 8px;
+    }
+}

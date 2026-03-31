@@ -349,6 +349,16 @@ export default function Home() {
             <section className="playlists__section" id="playlists">
                     <Playlist/>
             </section>
+            <section className="video__section" id="events">
+                <div className="video__container">
+                    <iframe
+                        src="https://www.youtube.com/embed/KSob0FVsKIQ"
+                        title="Cafe Riddim Live"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                    />
+                </div>
+            </section>
             <section className="gallery__section" id="events">
                 <div className="gallery__header">
                     <p>
