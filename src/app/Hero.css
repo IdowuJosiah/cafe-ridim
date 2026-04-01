@@ -960,7 +960,18 @@ html {
     margin-top: 32px; /* space from description above */
     z-index: 10;
 }
-
+.hero__genres__video{
+    position: relative;
+    text-align: center;
+    padding: 5px 20px;
+    margin-top: 32px; /* space from description above */
+    z-index: 10;
+    cursor: pointer;
+    color: white;
+    text-decoration: underline;
+    text-decoration-color: white ;
+    text-underline-offset: 5px;
+}
 .hero__genres-title {
     font-family: "DM Sans", sans-serif;
     font-size: 14px;

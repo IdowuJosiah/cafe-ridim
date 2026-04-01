@@ -358,6 +358,9 @@ export default function Home() {
                         allowFullScreen
                     />
                 </div>
+                <div className="hero__genres__video">
+                    <a  href="https://www.youtube.com/channel/UCiZMqKD0K1Iu3yUwGocBR5A"className="hero__genres-title"> CLICK HERE TO GET MORE OF OUR SETS HERE </a>
+                </div>
             </section>
             <section className="gallery__section" id="events">
                 <div className="gallery__header">
