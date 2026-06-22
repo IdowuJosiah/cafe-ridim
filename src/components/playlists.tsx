@@ -2,7 +2,7 @@ import "./playlist.css";
 
 const playlists = [
     {
-        id: "6DJ43iotUEy4x8aUko86RD",
+        id: "37i9dQZF1E4vPyrvVnZeyH",
         title: "Guilty Pleasures",
     },
     {

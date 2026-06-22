@@ -368,60 +368,22 @@ export default function Home() {
                         CAFE RIDDIM LIVE
                     </p>
                 </div>
-                <div className="gallery__grid__section">
-                    <div className="grid__top__half">
-                        <div className="image__one gt">
-                            <img src={g.one} alt={"image"} loading="lazy" />
-                        </div>
-                        <div className="image__one gt" >
-                            <img src={g.two} alt={"image"} loading="lazy" />
-                        </div>
-                        <div className="image__one gt">
-                            <img src={g.seventeen} alt={"image"} loading="lazy" />
-                        </div>
-                        <div className="image__four__section">
-                            <div className="image__four gt">
-                                <img src={g.four} alt={"image"} loading="lazy" />
-                            </div>
-                            <div className="image__four gt">
-                                <img src={g.five} alt={"image"} loading="lazy" />
-                            </div>
-                            <div className="image__four gt">
-                                <img src={g.six} alt={"image"} loading="lazy" />
-                            </div>
-                            <div className="image__four gt">
-                                <img src={g.seven} alt={"image"} loading="lazy" />
-                            </div>
-                        </div>
-                    </div>
-                    <div className="grid__bottom__half">
-                        <div className="image__nine">
-                            <img src={g.seven} alt={"image"} loading="lazy" />
-                        </div>
-                        <div className="image__ten">
-                            <img src={g.nine} alt={"image"} loading="lazy" />
-                        </div>
-                        <div className="image__ten">
-                            <img src={g.sixteen} alt={"image"} loading="lazy" />
-                        </div>
-                        <div className="image__ten__section">
-                            <div className="ten__section__div">
-                                <img src={g.thirteen} alt={"image"} loading="lazy" />
-                            </div>
-                            <div className="ten__section__div">
-                                <img src={g.fourteen} alt={"image"} loading="lazy" />
-                            </div>
-                            <div className="ten__section__div">
-                                <img src={g.five} alt={"image"} loading="lazy" />
-                            </div>
-                        </div>
-                        <div className="image__ten">
-                            <img src={g.sixteen} alt={"image"} loading="lazy" />
-                        </div>
-                        <div className="image__nine">
-                            <img src={g.three} alt={"image"} loading="lazy" />
-                        </div>
-                    </div>
+                <div className="gallery__grid">
+                    <div className="gallery__item"><img src={g.one} alt="gallery" loading="lazy" /></div>
+                    <div className="gallery__item"><img src={g.two} alt="gallery" loading="lazy" /></div>
+                    <div className="gallery__item"><img src={g.three} alt="gallery" loading="lazy" /></div>
+                    <div className="gallery__item"><img src={g.four} alt="gallery" loading="lazy" /></div>
+                    <div className="gallery__item"><img src={g.five} alt="gallery" loading="lazy" /></div>
+                    <div className="gallery__item"><img src={g.six} alt="gallery" loading="lazy" /></div>
+                    <div className="gallery__item"><img src={g.seven} alt="gallery" loading="lazy" /></div>
+                    <div className="gallery__item"><img src={g.nine} alt="gallery" loading="lazy" /></div>
+                    <div className="gallery__item"><img src={g.ten} alt="gallery" loading="lazy" /></div>
+                    <div className="gallery__item"><img src={g.eleven} alt="gallery" loading="lazy" /></div>
+                    <div className="gallery__item"><img src={g.twelve} alt="gallery" loading="lazy" /></div>
+                    <div className="gallery__item"><img src={g.thirteen} alt="gallery" loading="lazy" /></div>
+                    <div className="gallery__item"><img src={g.fourteen} alt="gallery" loading="lazy" /></div>
+                    <div className="gallery__item"><img src={g.sixteen} alt="gallery" loading="lazy" /></div>
+                    <div className="gallery__item"><img src={g.seventeen} alt="gallery" loading="lazy" /></div>
                 </div>
             </section>
             <footer className="footer__section" id="about">
