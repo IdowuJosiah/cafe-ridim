@@ -16,27 +16,22 @@ import { getSpotifyToken, getArtist, Artist } from "../lib/spotify";
 
 
 
-const CLOUD = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
-
-const url = (id: string) =>
-    `https://res.cloudinary.com/${CLOUD}/image/upload/f_auto,q_auto/${id}`;
-
 const g = {
-    one: url("image-one_lrcgy0"),
-    two: url("image-two_f1oqsy"),
-    three: url("image-three_ivxxcc"),
-    four: url("image-four_smpwob"),
-    five: url("image-fiver_daz5ua"),
-    six: url("image-six_sch9bt"),
-    seven: url("image-seven_wvs3g6"),
-    nine: url("image-nine_fizpux"),
-    ten: url("image-ten_nds4s9"),
-    eleven: url("image-eleven_cmet6d"),
-    twelve: url("image-twelve_jk2xtp"),
-    thirteen: url("image-thirteen_r25pql"),
-    fourteen: url("image-fourteen_xsqwya"),
-    sixteen: url("image-sixteen_dqu1wo"),
-    seventeen: url("image-seventeen_vcggep"),
+    one: "/gallery/one.jpg",
+    two: "/gallery/two.jpg",
+    three: "/gallery/three.jpg",
+    four: "/gallery/four.jpg",
+    five: "/gallery/five.jpg",
+    six: "/gallery/six.jpg",
+    seven: "/gallery/seven.jpg",
+    nine: "/gallery/nine.jpg",
+    ten: "/gallery/ten.jpg",
+    eleven: "/gallery/eleven.jpg",
+    twelve: "/gallery/twelve.jpg",
+    thirteen: "/gallery/thirteen.jpg",
+    fourteen: "/gallery/fourteen.jpg",
+    sixteen: "/gallery/sixteen.jpg",
+    seventeen: "/gallery/seventeen.jpg",
 };
 
 const ARTISTS = [
@@ -359,7 +354,7 @@ export default function Home() {
                     />
                 </div>
                 <div className="hero__genres__video">
-                    <a  href="https://www.youtube.com/channel/UCiZMqKD0K1Iu3yUwGocBR5A"className="hero__genres-title"> CLICK HERE TO GET MORE OF OUR SETS HERE </a>
+                    <a href="https://www.youtube.com/channel/UCiZMqKD0K1Iu3yUwGocBR5A"> CLICK HERE TO GET MORE OF OUR SETS HERE </a>
                 </div>
             </section>
             <section className="gallery__section" id="events">

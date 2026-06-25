@@ -6,6 +6,8 @@ const TRACK_IDS = [
     "6UhI1tdJO089lpNTIiF31d",
     "4qmUlH3j4yGfS73t18vug9",
     "1UUBVecT2fh0Mn0XPGoWtm",
+    "7kXsXClRjn2rFhbDqdYy2P",
+    "304DMW8WccDX2tzhkWQcsI",
     // "3JN8aItsGqTWapuekI8vxM",
 ];
 
