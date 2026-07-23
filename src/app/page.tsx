@@ -407,9 +407,7 @@ export default function Home() {
                     </div>
                 </div>
                 <div className="footer__wts">
-                    <p>
-                        A @WeTalkSound Project
-                    </p>
+
                 </div>
                 <div className="footer__log">
                     <img src={cafeRidimLogoBlack} alt="Cafe Riddim" />
