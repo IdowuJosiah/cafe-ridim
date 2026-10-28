@@ -1,175 +1,268 @@
-.admin {
-    --admin-bg: #f5efe6;
-    --admin-card: #ffffff;
-    --admin-text: #2b2620;
-    --admin-muted: #7a7064;
-    --admin-border: #e6ddd0;
-    --admin-accent: #48523d;
-    --admin-danger: #b3360a;
+/* Matches the landing page: textured background, Sugar Crush headings, glass panels like the submit modal */
 
+.admin {
+    --admin-cream: #fff1ea;
+    --admin-brown: #591e08;
+    --admin-rust: #bf4011;
+    --admin-glass: hsl(0, 0%, 100%, 0.1);
+    --admin-glass-border: hsl(0, 0%, 100%, 0.3);
+    --admin-muted: rgba(255, 241, 234, 0.7);
+
+    position: relative;
     min-height: 100vh;
-    padding: 40px 16px;
-    background: var(--admin-bg);
-    color: var(--admin-text);
-    font-family: "Lexend", Arial, sans-serif;
+    padding: 110px 16px 60px;
+    color: var(--admin-cream);
+    font-family: "DM Sans", sans-serif;
+    background: #591e08;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
+    gap: 24px;
+}
+
+/* Fixed layer instead of background-attachment: fixed, which iOS Safari ignores */
+.admin::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background:
+        linear-gradient(to bottom, rgba(10, 10, 10, 0.55) 0%, rgba(89, 30, 8, 0.8) 55%, #591e08 100%),
+        url("/bg2.jpg") center top / cover no-repeat;
+    pointer-events: none;
 }
 
 .admin > * {
+    position: relative;
     width: 100%;
-    max-width: 760px;
+    max-width: 840px;
 }
 
-.admin__header {
+/* NAV — same bar as the landing page */
+.admin__nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    max-width: none;
+    height: 70px;
+    padding: 0 60px;
     display: flex;
+    align-items: center;
     justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 12px;
+    gap: 24px;
+    background: rgba(10, 10, 10, 0.47);
+    z-index: 10;
 }
 
-.admin__header-links {
+.admin__nav-brand {
+    height: 34px;
+    width: auto;
+}
+
+.admin__nav-links {
     display: flex;
     align-items: center;
-    gap: 16px;
+    gap: 24px;
+}
+
+.admin__nav-link {
+    font-family: "ATP-SugarCrush", sans-serif;
+    font-size: 18px;
+    color: white;
+    text-decoration: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    white-space: nowrap;
+    position: relative;
+}
+
+.admin__nav-link::after {
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 1.5px;
+    background-color: white;
+    transition: width 0.3s ease;
+}
+
+.admin__nav-link:hover::after {
+    width: 100%;
+}
+
+/* HEADINGS */
+.admin__logo {
+    display: flex;
+    justify-content: center;
+}
+
+.admin__logo img {
+    width: min(520px, 90%);
+    filter: drop-shadow(0px 4px 60px rgba(0, 0, 0, 0.5));
 }
 
 .admin__title {
-    font-size: 24px;
-    font-weight: 600;
+    font-family: "ATP-SugarCrush", sans-serif;
+    font-weight: normal;
+    font-size: 48px;
+    text-align: center;
+    color: white;
+    text-shadow: 0 2px 24px rgba(0, 0, 0, 0.6);
 }
 
 .admin__section-title {
-    font-size: 18px;
-    font-weight: 600;
-    margin-bottom: 4px;
+    font-family: "ATP-SugarCrush", sans-serif;
+    font-weight: normal;
+    font-size: 40px;
+    color: white;
 }
 
+/* GLASS PANELS — same treatment as the submit modal */
 .admin__card {
-    background: var(--admin-card);
-    border: 1px solid var(--admin-border);
-    border-radius: 12px;
-    padding: 24px;
+    background: var(--admin-glass);
+    border: 1px solid var(--admin-glass-border);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border-radius: 36px;
+    padding: 40px 48px;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 16px;
 }
 
 .admin__card--narrow {
-    max-width: 380px;
-    margin-top: 10vh;
+    max-width: 440px;
 }
 
 .admin__muted {
     color: var(--admin-muted);
-    font-size: 14px;
+    font-size: 15px;
+}
+
+.admin__muted code {
+    color: var(--admin-cream);
 }
 
 .admin a {
-    color: var(--admin-accent);
-    text-decoration: underline;
-    text-underline-offset: 2px;
+    color: var(--admin-cream);
+    text-decoration: none;
 }
 
+.admin__row-text a:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+/* FORM FIELDS */
 .admin__label {
     font-size: 14px;
-    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
 }
 
 .admin__input {
     flex: 1;
     min-width: 0;
-    padding: 10px 12px;
-    font: inherit;
-    font-size: 15px;
-    border: 1px solid var(--admin-border);
+    background: var(--admin-glass);
+    border: 1px solid var(--admin-glass-border);
     border-radius: 8px;
-    background: #fff;
-    color: var(--admin-text);
+    padding: 12px 16px;
+    font-family: inherit;
+    font-size: 16px;
+    color: var(--admin-cream);
+    outline: none;
+}
+
+.admin__input::placeholder {
+    color: rgba(255, 241, 234, 0.5);
 }
 
 .admin__input:focus {
-    outline: 2px solid var(--admin-accent);
-    outline-offset: 1px;
+    border-color: var(--admin-cream);
+    box-shadow: 0 0 0 3px rgba(191, 64, 17, 0.25);
 }
 
 .admin__input--short {
-    flex: 0 1 200px;
-}
-
-.admin__button,
-.admin__icon-button,
-.admin__link-button {
-    font: inherit;
-    cursor: pointer;
-    border-radius: 8px;
-}
-
-.admin__button {
-    padding: 10px 16px;
-    font-size: 14px;
-    font-weight: 600;
-    border: none;
-    background: var(--admin-accent);
-    color: #fff;
-    white-space: nowrap;
-}
-
-.admin__button:hover {
-    filter: brightness(1.1);
-}
-
-.admin__button--danger {
-    background: transparent;
-    color: var(--admin-danger);
-    border: 1px solid currentColor;
-    padding: 6px 12px;
-}
-
-.admin__icon-button {
-    width: 34px;
-    height: 34px;
-    border: 1px solid var(--admin-border);
-    background: #fff;
-    color: var(--admin-text);
-}
-
-.admin__icon-button:disabled {
-    opacity: 0.35;
-    cursor: default;
-}
-
-.admin__link-button {
-    border: none;
-    background: none;
-    color: var(--admin-accent);
-    text-decoration: underline;
-    text-underline-offset: 2px;
-    font-size: 15px;
-}
-
-.admin__message {
-    padding: 12px 16px;
-    border-radius: 8px;
-    background: #e7ecdf;
-    color: #2f3627;
-    font-size: 14px;
-}
-
-.admin__message--error {
-    background: #fbe4da;
-    color: #7a2406;
+    flex: 0 1 220px;
 }
 
 .admin__add {
     display: flex;
-    gap: 8px;
+    gap: 10px;
     flex-wrap: wrap;
 }
 
+/* BUTTONS — same as the modal submit button */
+.admin__button {
+    background: var(--admin-brown);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 22px;
+    font-family: inherit;
+    font-size: 15px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.admin__button:hover {
+    background: var(--admin-rust);
+}
+
+.admin__button--danger {
+    background: transparent;
+    border: 1px solid var(--admin-glass-border);
+    padding: 8px 14px;
+    font-size: 13px;
+}
+
+.admin__button--danger:hover {
+    background: #c0392b;
+    border-color: #c0392b;
+}
+
+.admin__icon-button {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid var(--admin-glass-border);
+    background: transparent;
+    color: var(--admin-cream);
+    font-size: 15px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.admin__icon-button:hover:not(:disabled) {
+    background: var(--admin-brown);
+}
+
+.admin__icon-button:disabled {
+    opacity: 0.3;
+    cursor: default;
+}
+
+/* MESSAGES */
+.admin__message {
+    padding: 14px 20px;
+    border-radius: 12px;
+    font-size: 15px;
+    background: rgba(72, 82, 61, 0.55);
+    border: 1px solid rgba(180, 200, 160, 0.4);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+}
+
+.admin__message--error {
+    background: rgba(192, 57, 43, 0.35);
+    border-color: rgba(255, 140, 120, 0.5);
+}
+
+/* LISTS */
 .admin__list {
     list-style: none;
     display: flex;
@@ -179,21 +272,21 @@
 .admin__row {
     display: flex;
     align-items: center;
-    gap: 12px;
-    padding: 12px 0;
-    border-top: 1px solid var(--admin-border);
+    gap: 16px;
+    padding: 14px 0;
+    border-top: 1px solid var(--admin-glass-border);
 }
 
 .admin__cover {
-    width: 48px;
-    height: 48px;
-    border-radius: 6px;
+    width: 56px;
+    height: 56px;
+    border-radius: 8px;
     object-fit: cover;
     flex-shrink: 0;
 }
 
 .admin__cover--empty {
-    background: var(--admin-border);
+    background: linear-gradient(90deg, #591e08 25%, #7a2b0e 50%, #591e08 75%);
 }
 
 .admin__row-text {
@@ -201,7 +294,7 @@
     min-width: 0;
     display: flex;
     flex-direction: column;
-    gap: 2px;
+    gap: 4px;
 }
 
 .admin__row-text > * {
@@ -210,13 +303,61 @@
     white-space: nowrap;
 }
 
+.admin__row-title {
+    font-family: "Lexend", sans-serif;
+    font-size: 17px;
+}
+
+.admin__row-sub {
+    font-family: "Lexend", sans-serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--admin-muted);
+}
+
 .admin__controls {
     display: flex;
-    gap: 6px;
+    gap: 8px;
     align-items: center;
 }
 
+@media (max-width: 768px) {
+    .admin__nav {
+        padding: 0 20px;
+    }
+
+    .admin__nav-link {
+        font-size: 15px;
+    }
+
+    .admin__nav-links {
+        gap: 16px;
+    }
+
+    .admin__card {
+        padding: 28px 22px;
+        border-radius: 24px;
+    }
+
+    .admin__title {
+        font-size: 36px;
+    }
+
+    .admin__section-title {
+        font-size: 30px;
+    }
+}
+
 @media (max-width: 560px) {
+    .admin__nav-brand {
+        display: none;
+    }
+
+    .admin__nav {
+        justify-content: flex-end;
+    }
+
     .admin__row {
         flex-wrap: wrap;
     }
@@ -226,7 +367,8 @@
         justify-content: flex-end;
     }
 
-    .admin__input--short {
+    .admin__input--short,
+    .admin__add .admin__button {
         flex-basis: 100%;
     }
 }
