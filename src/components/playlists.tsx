@@ -1,21 +1,23 @@
+"use client"
+import { useState, useEffect } from "react";
+import type { Playlist } from "../lib/links";
 import "./playlist.css";
 
-const playlists = [
-    {
-        id: "37i9dQZF1E4vPyrvVnZeyH",
-        title: "Guilty Pleasures",
-    },
-    {
-        id: "016aj4GM4dkUFS68JmsG0Z",
-        title: "Playlist 2",
-    },
-    {
-        id: "6IKGONJaYnsQSLmlSkSyTc",
-        title: "Playlist 3",
-    },
-];
-
 export default function Playlists() {
+    const [playlists, setPlaylists] = useState<Playlist[]>([]);
+
+    useEffect(() => {
+        fetch("/api/playlists")
+            .then(res => {
+                if (!res.ok) throw new Error(`Status ${res.status}`);
+                return res.json();
+            })
+            .then(setPlaylists)
+            .catch(err => console.error("Failed to fetch playlists:", err));
+    }, []);
+
+    if (playlists.length === 0) return null;
+
     return (
         <section className="playlists">
             <h2 className="playlists__title">OUR PLAYLISTS</h2>
@@ -24,6 +26,7 @@ export default function Playlists() {
                     <iframe
                         key={playlist.id}
                         className="playlists__embed"
+                        title={playlist.title}
                         src={`https://open.spotify.com/embed/playlist/${playlist.id}?utm_source=generator&theme=0`}
                         loading="lazy"
                     />

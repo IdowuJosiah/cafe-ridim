@@ -1,0 +1,232 @@
+.admin {
+    --admin-bg: #f5efe6;
+    --admin-card: #ffffff;
+    --admin-text: #2b2620;
+    --admin-muted: #7a7064;
+    --admin-border: #e6ddd0;
+    --admin-accent: #48523d;
+    --admin-danger: #b3360a;
+
+    min-height: 100vh;
+    padding: 40px 16px;
+    background: var(--admin-bg);
+    color: var(--admin-text);
+    font-family: "Lexend", Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.admin > * {
+    width: 100%;
+    max-width: 760px;
+}
+
+.admin__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.admin__header-links {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.admin__title {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.admin__section-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.admin__card {
+    background: var(--admin-card);
+    border: 1px solid var(--admin-border);
+    border-radius: 12px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.admin__card--narrow {
+    max-width: 380px;
+    margin-top: 10vh;
+}
+
+.admin__muted {
+    color: var(--admin-muted);
+    font-size: 14px;
+}
+
+.admin a {
+    color: var(--admin-accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+.admin__label {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.admin__input {
+    flex: 1;
+    min-width: 0;
+    padding: 10px 12px;
+    font: inherit;
+    font-size: 15px;
+    border: 1px solid var(--admin-border);
+    border-radius: 8px;
+    background: #fff;
+    color: var(--admin-text);
+}
+
+.admin__input:focus {
+    outline: 2px solid var(--admin-accent);
+    outline-offset: 1px;
+}
+
+.admin__input--short {
+    flex: 0 1 200px;
+}
+
+.admin__button,
+.admin__icon-button,
+.admin__link-button {
+    font: inherit;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+.admin__button {
+    padding: 10px 16px;
+    font-size: 14px;
+    font-weight: 600;
+    border: none;
+    background: var(--admin-accent);
+    color: #fff;
+    white-space: nowrap;
+}
+
+.admin__button:hover {
+    filter: brightness(1.1);
+}
+
+.admin__button--danger {
+    background: transparent;
+    color: var(--admin-danger);
+    border: 1px solid currentColor;
+    padding: 6px 12px;
+}
+
+.admin__icon-button {
+    width: 34px;
+    height: 34px;
+    border: 1px solid var(--admin-border);
+    background: #fff;
+    color: var(--admin-text);
+}
+
+.admin__icon-button:disabled {
+    opacity: 0.35;
+    cursor: default;
+}
+
+.admin__link-button {
+    border: none;
+    background: none;
+    color: var(--admin-accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    font-size: 15px;
+}
+
+.admin__message {
+    padding: 12px 16px;
+    border-radius: 8px;
+    background: #e7ecdf;
+    color: #2f3627;
+    font-size: 14px;
+}
+
+.admin__message--error {
+    background: #fbe4da;
+    color: #7a2406;
+}
+
+.admin__add {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.admin__list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+}
+
+.admin__row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 0;
+    border-top: 1px solid var(--admin-border);
+}
+
+.admin__cover {
+    width: 48px;
+    height: 48px;
+    border-radius: 6px;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.admin__cover--empty {
+    background: var(--admin-border);
+}
+
+.admin__row-text {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.admin__row-text > * {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.admin__controls {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+}
+
+@media (max-width: 560px) {
+    .admin__row {
+        flex-wrap: wrap;
+    }
+
+    .admin__controls {
+        width: 100%;
+        justify-content: flex-end;
+    }
+
+    .admin__input--short {
+        flex-basis: 100%;
+    }
+}

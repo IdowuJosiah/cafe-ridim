@@ -15,8 +15,10 @@
 
 .playlists__grid {
     display: flex;
-    gap: 10px;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    column-gap: 3.5%;
+    row-gap: 20px;
+    justify-content: center;
 }
 
 .playlists__embed {
