@@ -1,15 +1,7 @@
 "use client"
 import { useState, useEffect } from "react";
-import { Track, getSpotifyToken, getTrack } from "../lib/spotify";
+import type { Track } from "../lib/spotify";
 import "./release.scss"
-const TRACK_IDS = [
-    "6UhI1tdJO089lpNTIiF31d",
-    "4qmUlH3j4yGfS73t18vug9",
-    "1UUBVecT2fh0Mn0XPGoWtm",
-    "7kXsXClRjn2rFhbDqdYy2P",
-    "304DMW8WccDX2tzhkWQcsI",
-    // "3JN8aItsGqTWapuekI8vxM",
-];
 
 export default function Release() {
     const [loading, setLoading] = useState(true);
@@ -18,11 +10,9 @@ export default function Release() {
     useEffect(() => {
         const fetchTracks = async () => {
             try {
-                const token = await getSpotifyToken();
-                const tracks = await Promise.all(
-                    TRACK_IDS.map(id => getTrack(id, token))
-                );
-                setReleases(tracks);
+                const res = await fetch("/api/releases");
+                if (!res.ok) throw new Error(`Status ${res.status}`);
+                setReleases(await res.json());
             } catch (err) {
                 console.error("Failed to fetch tracks:", err);
             } finally {
@@ -34,6 +24,7 @@ export default function Release() {
     }, []);
 
     if (loading) return <p>Loading...</p>;
+    if (releases.length === 0) return <p>Releases are unavailable right now.</p>;
 
     return (
         <section className="releases">
