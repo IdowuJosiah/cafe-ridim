@@ -1,6 +1,8 @@
 
-const CLIENT_ID = process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_ID;
-const CLIENT_SECRET = process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_SECRET;
+// Server-only: these must never be NEXT_PUBLIC_, or the secret ends up in the browser bundle.
+// The NEXT_PUBLIC_ fallbacks keep existing deployments working until the env vars are renamed.
+const CLIENT_ID = process.env.SPOTIFY_CLIENT_ID ?? process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_ID;
+const CLIENT_SECRET = process.env.SPOTIFY_CLIENT_SECRET ?? process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_SECRET;
 
 export interface Track {
     title: string;
@@ -30,6 +32,7 @@ export const getSpotifyToken = async (): Promise<string> => {
         body: "grant_type=client_credentials",
     });
 
+    if (!res.ok) throw new Error(`Spotify token request failed: ${res.status}`);
     const data = await res.json();
 
     // Cache the token — expire 1 minute early to avoid edge cases
@@ -38,28 +41,11 @@ export const getSpotifyToken = async (): Promise<string> => {
 
     return cachedToken as string;
 };
-export interface Artist {
-    name: string;
-    image: string;
-    spotify: string;
-}
-
-export const getArtist = async (artistId: string, token: string): Promise<Artist> => {
-    const res = await fetch(`https://api.spotify.com/v1/artists/${artistId}`, {
-        headers: { "Authorization": `Bearer ${token}` },
-    });
-    const data = await res.json();
-    console.log("Artist response:", data); // add this to debug
-    return {
-        name: data.name,
-        image: data.images?.[0]?.url || "/artist.png", // fallback to local image
-        spotify: data.external_urls?.spotify || "#",
-    };
-};
 export const getTrack = async (trackId: string, token: string): Promise<Track> => {
     const res = await fetch(`https://api.spotify.com/v1/tracks/${trackId}`, {
         headers: { "Authorization": `Bearer ${token}` },
     });
+    if (!res.ok) throw new Error(`Spotify track ${trackId} request failed: ${res.status}`);
     const data = await res.json();
     return {
         title: data.name,

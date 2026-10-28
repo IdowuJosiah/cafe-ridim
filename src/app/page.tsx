@@ -1,7 +1,6 @@
 "use client"
 import "./Hero.css";
 import { BsInstagram, BsFacebook, BsTwitterX } from "react-icons/bs";
-const bgImage = "https://www.figma.com/api/mcp/asset/93633085-5b25-4fa6-be23-e4e326b55db2";
 const cafeRiddimLogo = "/canva.png";
 const cafeRidimLogoBlack = "/canvablack.png"
 import Release from "../components/release";
@@ -9,10 +8,7 @@ const artistImage = "/artist.png";
 const submitImage = "/houn3.png";
 const heroSubmitImage = "/hountop.png"
 import Playlist from "../components/playlists";
-import Link from "next/link";
-import {useState, useEffect} from "react";
-import Image from "next/image";
-import { getSpotifyToken, getArtist, Artist } from "../lib/spotify";
+import {useState} from "react";
 
 
 
@@ -95,6 +91,13 @@ export default function Home() {
             if (!form.file) errors.file = "Please upload a track";
             return errors;
         };
+        const closeModal = () => {
+            setShowModal(false);
+            setForm({});
+            setFieldErrors({});
+            setError("");
+            setSuccess(false);
+        };
         const handleSubmit = async () => {
             const errors = validate();
             if (Object.keys(errors).length > 0) {
@@ -120,7 +123,9 @@ export default function Home() {
                         { method: "POST", body: fileData }
                     );
                     const uploadData = await uploadRes.json();
-                    console.log("Cloudinary response:", uploadData);
+                    if (!uploadRes.ok || !uploadData.secure_url) {
+                        throw new Error("Upload failed");
+                    }
                     fileUrl = uploadData.secure_url;
                 }
 
@@ -153,15 +158,15 @@ export default function Home() {
         return (
         <div>
             {showModal && (
-                <div className="modal__overlay" onClick={() => setShowModal(false)}>
+                <div className="modal__overlay" onClick={closeModal}>
                     <div className="modal" onClick={(e) => e.stopPropagation()}>
-                        <button className="modal__close" onClick={() => setShowModal(false)}>✕</button>
+                        <button className="modal__close" onClick={closeModal}>✕</button>
                         <h2 className="modal__title">Send us music for collaboration and release consideration.</h2>
                         <p className="modal__subtitle"> If it fits the world we’re building, we’ll be in touch.</p>
 
                         {success ? (
                             <div className="modal__success">
-                                <p>🎵 Submission received! Well be in touch.</p>
+                                <p>🎵 Submission received! We’ll be in touch.</p>
                             </div>
                         ) : (
                             <div className="modal__form">
@@ -357,7 +362,7 @@ export default function Home() {
                     <a href="https://www.youtube.com/channel/UCiZMqKD0K1Iu3yUwGocBR5A"> CLICK HERE TO GET MORE OF OUR SETS HERE </a>
                 </div>
             </section>
-            <section className="gallery__section" id="events">
+            <section className="gallery__section" id="gallery">
                 <div className="gallery__header">
                     <p>
                         CAFE RIDDIM LIVE
