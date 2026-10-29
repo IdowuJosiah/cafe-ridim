@@ -1,7 +1,7 @@
 "use server";
 
 import { redirect } from "next/navigation";
-import { updateTag } from "next/cache";
+import { revalidatePath, updateTag } from "next/cache";
 import { checkPassword, createSession, destroySession, isLoggedIn } from "../../lib/admin-auth";
 import { LINKS_CACHE_TAG, parseSpotifyId, readLinks, SpotifyLinks, writeLinks } from "../../lib/links";
 import { getSpotifyToken, getTrack } from "../../lib/spotify";
@@ -21,6 +21,8 @@ const save = async (links: SpotifyLinks) => {
         done("save-failed");
     }
     updateTag(LINKS_CACHE_TAG);
+    // The homepage is pre-rendered with the links, so rebuild it too
+    revalidatePath("/");
 };
 
 const move = <T,>(items: T[], index: number, direction: string) => {
