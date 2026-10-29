@@ -1,9 +1,11 @@
 
 @font-face {
     font-family: "ATP-SugarCrush";
-    src: url("/font/atpfont.otf") format("opentype");
+    src: url("/font/atpfont.woff2") format("woff2"),
+         url("/font/atpfont.otf") format("opentype");
     font-weight: normal;
     font-style: normal;
+    font-display: swap;
 }
 
 
@@ -34,7 +36,7 @@ html {
     position: relative;
     width: 100%;
     min-height: 120vh;
-    background-image: url("/bg2.jpg");
+    background-image: url("/bg2.webp");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -126,7 +128,7 @@ html {
     display: flex;
     justify-content: flex-end;
     padding: 0px 60px;
-    z-index: 1000;
+    z-index: 999; /* below the fixed nav (1000) so it scrolls underneath it */
 }
 
 .hero__submit img {

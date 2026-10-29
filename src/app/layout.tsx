@@ -1,17 +1,12 @@
-
-
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Lexend } from "next/font/google";
 import "./globals.css";
 import "./page.scss"
 import "./Hero.css"
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+// Self-hosted by Next.js, so it no longer blocks rendering on a Google Fonts request
+const lexend = Lexend({
+  variable: "--font-lexend",
   subsets: ["latin"],
 });
 
@@ -19,7 +14,7 @@ export const metadata: Metadata = {
     title: "Cafe Ridim Website",
     description: "Official Cafe Ridim Website",
 
-};;
+};
 
 export default function RootLayout({
   children,
@@ -29,12 +24,12 @@ export default function RootLayout({
   return (
     <html lang="en">
         <head>
-            <link rel="preload" as="image" href="/bg.jpg" />
-            <link rel="preconnect" href="https://fonts.googleapis.com" />
-            <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet" />
+            {/* Both are only discovered after the CSS loads, so start fetching them straight away */}
+            <link rel="preload" as="image" href="/bg2.webp" type="image/webp" fetchPriority="high" />
+            <link rel="preload" as="font" href="/font/atpfont.woff2" type="font/woff2" crossOrigin="anonymous" />
         </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${lexend.variable} antialiased`}
       >
         {children}
       </body>

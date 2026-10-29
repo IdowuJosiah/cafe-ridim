@@ -1,21 +1,7 @@
-"use client"
-import { useState, useEffect } from "react";
 import type { Playlist } from "../lib/links";
 import "./playlist.css";
 
-export default function Playlists() {
-    const [playlists, setPlaylists] = useState<Playlist[]>([]);
-
-    useEffect(() => {
-        fetch("/api/playlists")
-            .then(res => {
-                if (!res.ok) throw new Error(`Status ${res.status}`);
-                return res.json();
-            })
-            .then(setPlaylists)
-            .catch(err => console.error("Failed to fetch playlists:", err));
-    }, []);
-
+export default function Playlists({ playlists }: { playlists: Playlist[] }) {
     if (playlists.length === 0) return null;
 
     return (
